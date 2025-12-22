@@ -33,22 +33,35 @@
   // ================================
   // Continuous Photo Gallery (15s)
   // ================================
-  // 1) Put ALL photos you want to cycle through inside /images
-  // 2) Add their paths below
   const galleryPhotos = [
-    "images/img-20190908-wa0007.jpg",
-    "images/final.jpg",
-    "images/20191226_131622.jpg"
-    // Add more examples:
-    // "images/karthik-01.jpg",
-    // "images/karthik-02.jpg",
-    // "images/karthik-03.jpg",
+    "images/IMG-20190908-WA0007.jpg",
+    "images/Karthik%20discussing%20case%20study.jpg",
+    "images/Karthik%20in%20class.jpg",
+    "images/Karthik%20in%20college%20park.jpg",
+    "images/Karthik%20in%20football%20team.jpg",
+    "images/Karthik%20in%20sports%20meet%20at%20IIM%20Bangalore.jpeg",
+    "images/Karthik%20in%20Tennis%20team%20at%20IIM%20Bangalore.jpg",
+    "images/Karthik%20panoramic%20photo%20of%20kodaikanal%20observatory.jpg",
+    "images/Karthik%20was%20an%20investor%20in%20cricket%20team.jpg",
+    "images/Karthik%20with%20Saumen%20sirs%20econometric%20class.jpg",
+    "images/Karthik%20with%20Shiva.jpg",
+    "images/Karthik%20with%20Shiva%20(2).jpg",
+    "images/Karthik%20with%20shiva%20(3).jpg",
+    "images/IMG-20190420-WA0004.jpg",
+    "images/IMG-20191013-WA0002.jpg",
+    "images/Karthik%20in%20class%20(2).jpg",
+    "images/Karthik%20with%20class.jpg",
+    "images/Karthik%20with%20Kapil.jpeg",
+    "images/Karthik%20with%20Manisha%20being%20funny.jpg",
+    "images/Karthik%20with%20Nikhil.jpg",
+    "images/Karthik%20with%20Paresh.jpeg",
+    "images/Karthik%20with%20Paresh%20(2).jpeg",
+    "images/WhatsApp%20Image%202023-02-02%20at%2003.36.04%20(2).jpeg"
   ];
 
   const img = document.getElementById("galleryImg");
   let idx = 0;
 
-  // Preload images so it doesn't flash/lag
   galleryPhotos.forEach((src) => {
     const preload = new Image();
     preload.src = src;
@@ -57,10 +70,8 @@
   function showNext() {
     if (!img || galleryPhotos.length < 2) return;
 
-    // Fade out
     img.classList.add("is-fading");
 
-    // After fade out completes, swap image and fade in
     setTimeout(() => {
       idx = (idx + 1) % galleryPhotos.length;
       img.src = galleryPhotos[idx];
@@ -68,6 +79,5 @@
     }, 700);
   }
 
-  // Change every 15 seconds
   setInterval(showNext, 15000);
 </script>
