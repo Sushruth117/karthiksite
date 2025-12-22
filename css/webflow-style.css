@@ -3280,23 +3280,31 @@ img {
 #w-node-ece50f06-a8d9-5a08-7ab4-9fc81fbc8f60-a361f367 {
   align-self: center;
 }
-/* ================================
-   Gallery: hard size constraints
-   ================================ */
+/* =====================================
+   GALLERY — HARD ISOLATION (FINAL FIX)
+   ===================================== */
 
-.gallery-wrapper {
-    width: 520px; /* frame width */
-    max-width: 95vw; /* responsive */
+.gallery-isolate {
+    width: 520px;
+    max-width: 95vw;
     margin: 0 auto;
+    position: relative;
+    z-index: 20;
+}
+
+.gallery-frame {
+    width: 100%;
+    height: 380px;
+    overflow: hidden; /* CRITICAL */
+    background: rgba(0,0,0,0.25);
+    border: 2px solid rgba(255,255,255,0.25);
 }
 
 #galleryImg {
     width: 100%;
-    height: 380px; /* frame height */
+    height: 100%;
     display: block;
-    object-fit: contain; /* keep full image without cropping */
-    background: rgba(0,0,0,0.25);
-    border: 2px solid rgba(255,255,255,0.25);
+    object-fit: contain;
     transition: opacity 700ms ease;
 }
 
@@ -3307,7 +3315,7 @@ img {
 .gallery-controls {
     display: flex;
     justify-content: center;
-    gap: 14px;
+    gap: 16px;
     margin-top: 10px;
 }
 
@@ -3318,10 +3326,11 @@ img {
     padding: 6px 14px;
     cursor: pointer;
     font-size: 14px;
-    line-height: 1;
+    user-select: none;
 }
 
     .gallery-btn:hover {
         background: rgba(255,255,255,0.28);
     }
+
 
