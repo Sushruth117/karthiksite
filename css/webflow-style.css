@@ -3280,3 +3280,44 @@ img {
 #w-node-ece50f06-a8d9-5a08-7ab4-9fc81fbc8f60-a361f367 {
   align-self: center;
 }
+/* ================================
+   Gallery container + sizing
+   ================================ */
+
+/* Ensure image never overflows */
+#galleryImg {
+    width: 100%;
+    max-width: 520px;
+    height: 380px;
+    object-fit: contain; /* KEY: no cropping */
+    background-color: rgba(0,0,0,0.25);
+    transition: opacity 700ms ease;
+    display: block;
+    margin: 0 auto;
+}
+
+    /* Fade effect */
+    #galleryImg.is-fading {
+        opacity: 0;
+    }
+
+/* Gallery controls */
+.gallery-controls {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+.gallery-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.35);
+    color: #fff;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .gallery-btn:hover {
+        background: rgba(255,255,255,0.3);
+    }
