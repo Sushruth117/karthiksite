@@ -3281,32 +3281,34 @@ img {
   align-self: center;
 }
 /* ================================
-   Gallery container + sizing
+   Gallery: hard size constraints
    ================================ */
 
-/* Ensure image never overflows */
-#galleryImg {
-    width: 100%;
-    max-width: 520px;
-    height: 380px;
-    object-fit: contain; /* KEY: no cropping */
-    background-color: rgba(0,0,0,0.25);
-    transition: opacity 700ms ease;
-    display: block;
+.gallery-wrapper {
+    width: 520px; /* frame width */
+    max-width: 95vw; /* responsive */
     margin: 0 auto;
 }
 
-    /* Fade effect */
+#galleryImg {
+    width: 100%;
+    height: 380px; /* frame height */
+    display: block;
+    object-fit: contain; /* keep full image without cropping */
+    background: rgba(0,0,0,0.25);
+    border: 2px solid rgba(255,255,255,0.25);
+    transition: opacity 700ms ease;
+}
+
     #galleryImg.is-fading {
         opacity: 0;
     }
 
-/* Gallery controls */
 .gallery-controls {
     display: flex;
     justify-content: center;
-    gap: 16px;
-    margin-top: 12px;
+    gap: 14px;
+    margin-top: 10px;
 }
 
 .gallery-btn {
@@ -3316,8 +3318,10 @@ img {
     padding: 6px 14px;
     cursor: pointer;
     font-size: 14px;
+    line-height: 1;
 }
 
     .gallery-btn:hover {
-        background: rgba(255,255,255,0.3);
+        background: rgba(255,255,255,0.28);
     }
+
