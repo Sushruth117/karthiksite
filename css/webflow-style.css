@@ -3280,57 +3280,57 @@ img {
 #w-node-ece50f06-a8d9-5a08-7ab4-9fc81fbc8f60-a361f367 {
   align-self: center;
 }
-/* =====================================
-   GALLERY — HARD ISOLATION (FINAL FIX)
-   ===================================== */
+/* ================================
+   Gallery: fixed frame + controls
+   ================================ */
 
-.gallery-isolate {
+.gallery-wrapper {
+    position: fixed;
+    top: 18%;
+    right: 6%;
     width: 520px;
-    max-width: 95vw;
-    margin: 0 auto;
-    position: relative;
+    height: 420px;
     z-index: 20;
 }
 
-.gallery-frame {
-    width: 100%;
-    height: 380px;
-    overflow: hidden; /* CRITICAL */
-    background: rgba(0,0,0,0.25);
-    border: 2px solid rgba(255,255,255,0.25);
-}
-
-#galleryImg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-    transition: opacity 700ms ease;
-}
-
-    #galleryImg.is-fading {
-        opacity: 0;
+    .gallery-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ✅ prevents stretching */
+        border: 4px solid rgba(255,255,255,0.35);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.55);
+        background: rgba(0,0,0,0.25);
     }
 
 .gallery-controls {
+    position: absolute;
+    top: -38px;
+    left: 0;
     display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 10px;
+    gap: 10px;
+    z-index: 25;
 }
 
 .gallery-btn {
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.35);
-    color: #fff;
-    padding: 6px 14px;
-    cursor: pointer;
+    font-family: inherit;
     font-size: 14px;
-    user-select: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.85);
+    color: #111;
 }
 
     .gallery-btn:hover {
-        background: rgba(255,255,255,0.28);
+        background: rgba(255,255,255,1);
     }
+
+/* Optional: hide gallery on small screens */
+@media screen and (max-width: 991px) {
+    .gallery-wrapper {
+        display: none;
+    }
+}
+
 
 
