@@ -1,0 +1,374 @@
+/* ============================================
+   MEMORIES PAGE - CUSTOM STYLES
+   ============================================ */
+
+.memories-page {
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* Back Link */
+.back-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+  color: var(--color-gold);
+  text-decoration: none;
+  font-family: var(--font-decorative);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-medium);
+}
+
+.back-link:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-glow);
+  transform: translateX(-3px);
+}
+
+.back-arrow {
+  font-size: 14px;
+  transition: transform var(--transition-fast);
+}
+
+.back-link:hover .back-arrow {
+  transform: translateX(-3px);
+}
+
+/* Memories Content */
+.memories-content {
+  position: relative;
+  z-index: 10;
+  padding: 100px 0 60px;
+}
+
+/* Header */
+.memories-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.memories-title {
+  font-family: var(--font-decorative);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--color-gold);
+  margin-bottom: 16px;
+  letter-spacing: 3px;
+  text-shadow: var(--shadow-glow);
+}
+
+.memories-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Hero Image */
+.memories-hero-image {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.memories-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--transition-slow);
+}
+
+.memories-hero-image:hover img {
+  transform: scale(1.02);
+}
+
+/* Memories List */
+.memories-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Memory Card */
+.memory-card {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 12px;
+  transition: all var(--transition-medium);
+}
+
+.memory-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.memory-number {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  font-family: var(--font-decorative);
+  font-size: 14px;
+  color: var(--color-gold);
+}
+
+.memory-content {
+  flex: 1;
+}
+
+.memory-text {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.memory-text strong {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.memory-text:last-child {
+  margin-bottom: 0;
+}
+
+/* Poem Container */
+.poem-container {
+  margin: 30px 0;
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border-left: 3px solid var(--color-gold);
+}
+
+.poem-tamil {
+  font-family: 'Noto Sans Tamil', 'Open Sans', sans-serif;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--color-gold-light);
+  margin-bottom: 30px;
+}
+
+.poem-tamil p {
+  margin: 8px 0;
+}
+
+.poem-translation {
+  padding-top: 20px;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.poem-translation h4 {
+  font-family: var(--font-decorative);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-gold);
+  margin-bottom: 15px;
+}
+
+.poem-translation p {
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* Memory Quote */
+.memory-quote {
+  padding: 25px 30px;
+  background: rgba(212, 175, 55, 0.05);
+  border-radius: 8px;
+  font-style: italic;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  position: relative;
+}
+
+.quote-mark {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  color: var(--color-gold);
+  line-height: 1;
+  opacity: 0.5;
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Add Memory Card */
+.memory-add {
+  background: rgba(212, 175, 55, 0.05);
+  border-style: dashed;
+  text-align: center;
+}
+
+.memory-add .memory-number {
+  font-size: 24px;
+  background: rgba(212, 175, 55, 0.2);
+}
+
+.add-memory-title {
+  font-family: var(--font-decorative);
+  font-size: 1.5rem;
+  color: var(--color-gold);
+  margin-bottom: 15px;
+}
+
+.memory-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background: transparent;
+  border: 1px solid var(--color-gold);
+  border-radius: 4px;
+  color: var(--color-gold);
+  text-decoration: none;
+  font-family: var(--font-decorative);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all var(--transition-medium);
+}
+
+.memory-btn:hover {
+  background: rgba(212, 175, 55, 0.2);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* Memories Navigation */
+.memories-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Scroll Animation */
+.memory-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-in-up 0.6s ease forwards;
+}
+
+.memory-card:nth-child(1) { animation-delay: 0.1s; }
+.memory-card:nth-child(2) { animation-delay: 0.2s; }
+.memory-card:nth-child(3) { animation-delay: 0.3s; }
+.memory-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fade-in-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 767px) {
+  .memories-content {
+    padding: 80px 0 40px;
+  }
+  
+  .back-link {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+  
+  .memories-header {
+    margin-bottom: 40px;
+  }
+  
+  .memories-hero-image {
+    margin-bottom: 40px;
+    border-radius: 8px;
+  }
+  
+  .memory-card {
+    flex-direction: column;
+    gap: 20px;
+    padding: 25px;
+  }
+  
+  .memory-number {
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+  }
+  
+  .poem-container {
+    padding: 20px;
+    margin: 20px 0;
+  }
+  
+  .poem-tamil {
+    font-size: 1rem;
+  }
+  
+  .memories-nav {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .memory-card {
+    padding: 20px;
+  }
+  
+  .memory-text {
+    font-size: 1rem;
+  }
+  
+  .poem-tamil {
+    font-size: 0.95rem;
+  }
+}
