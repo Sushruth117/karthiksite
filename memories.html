@@ -3,155 +3,125 @@
 <head>
   <meta charset="utf-8"/>
   <title>Memories - Karthigeyan R</title>
-  <meta name="description" content="A collection of memories of Karthik - his passion for physics, poetry, and life."/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Memories - Karthigeyan R"/>
-  <meta property="og:description" content="A collection of memories of Karthik"/>
-  <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="description" content="A collection of memories of Karthik"/>
   
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Playfair Display:regular","Major Mono Display:regular"] }});</script>
   
   <!-- Styles -->
   <link href="css/webflow-style.css" rel="stylesheet" type="text/css"/>
   <link href="css/custom-improvements.css" rel="stylesheet" type="text/css"/>
-  <link href="css/memories.css" rel="stylesheet" type="text/css"/>
   
   <!-- Favicon -->
   <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon"/>
   <link href="images/app-icon.png" rel="apple-touch-icon"/>
 </head>
 
-<body class="body memories-page">
-  <!-- Animated Starfield Background -->
+<body class="body">
+  <!-- Back Link -->
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <!-- Starfield Background -->
   <div class="stars-bg" id="starfield"></div>
-  
-  <!-- Back to Home Link -->
-  <a href="index.html" class="back-link">
-    <span class="back-arrow">←</span> Back to Home
-  </a>
 
   <!-- Main Content -->
-  <main class="memories-content">
-    <div class="container">
+  <div class="main-content-wrapper memories-page">
+    <div class="container-2">
+      
       <!-- Header -->
-      <header class="memories-header">
-        <h1 class="memories-title">Memories Collection</h1>
-        <p class="memories-subtitle">This space is dedicated to recorded memories of Karthik as remembered by his friends.</p>
-      </header>
-
-      <!-- Hero Image -->
-      <div class="memories-hero-image">
-        <img src="images/karthik-memories.jpg" alt="Karthik in nature" loading="lazy"/>
+      <div class="memories-header">
+        <h1 class="centered-heading">Memories Collection</h1>
+        <p class="margin-bottom-24px">This space is dedicated to recorded memories of Karthik as remembered by his friends.</p>
       </div>
 
-      <!-- Memories List -->
-      <div class="memories-list">
+      <!-- Hero Image -->
+      <div class="hero-wrapper">
+        <div class="hero-split">
+          <img src="images/karthik-memories.jpg" alt="Karthik in nature" class="shadow-two" style="width: 100%; max-width: 500px;"/>
+        </div>
+      </div>
+
+      <!-- Memory 1: Bharathiyar Poem -->
+      <div class="memory-section">
+        <div class="memory-number">1</div>
+        <p class="margin-bottom-24px">
+          Karthik in one of our Podcasts read aloud and discussed about a poem by Bharathiyar. Here are the lines:
+        </p>
         
-        <!-- Memory 1: Bharathiyar Poem -->
-        <article class="memory-card">
-          <div class="memory-number">01</div>
-          <div class="memory-content">
-            <p class="memory-text">
-              Karthik in one of our Podcasts read aloud and discussed about a poem by Bharathiyar. Here are the lines:
-            </p>
-            <div class="poem-container">
-              <div class="poem-tamil">
-                <p>தேடிச் சோறுணிடும் தின்று</p>
-                <p>பல சின்னஞ் சிறுகதைகள் பேசி</p>
-                <p>மனம் வாடித் துன்பமிக உழன்று</p>
-                <p>பிறர் வாடப் பலசெயல்கள் செய்து</p>
-                <p>நரை கூடிக் கிழப்பருவ மெய்தி</p>
-                <p>கொடுங் கூற்றுக் கிறையெனப்பின் மாயும்</p>
-                <p>பல வேடிக்கை மனிதரைப் போலே</p>
-                <p>நான் வீழ்வேன் என்று நினைத்தாயோ?</p>
-              </div>
-              <div class="poem-translation">
-                <h4>Translation:</h4>
-                <p>"Scavenging for food daily,<br>
-                Engaging in many petty, insignificant talks,<br>
-                With minds wilted by sorrow and suffering,<br>
-                Performing actions that bring misery to others,<br>
-                Growing old with graying hair but achieving nothing,<br>
-                Eventually succumbing to the cruel fate of death,<br>
-                Just like these laughable humans,<br>
-                Did you think I too would fall?"</p>
-              </div>
-            </div>
+        <div class="poem-container">
+          <div class="poem-tamil">
+            <p>தேடிச் சோறுணிடும் தின்று</p>
+            <p>பல சின்னஞ் சிறுகதைகள் பேசி</p>
+            <p>மனம் வாடித் துன்பமிக உழன்று</p>
+            <p>பிறர் வாடப் பலசெயல்கள் செய்து</p>
+            <p>நரை கூடிக் கிழப்பருவ மெய்தி</p>
+            <p>கொடுங் கூற்றுக் கிறையெனப்பின் மாயும்</p>
+            <p>பல வேடிக்கை மனிதரைப் போலே</p>
+            <p>நான் வீழ்வேன் என்று நினைத்தாயோ?</p>
           </div>
-        </article>
-
-        <!-- Memory 2: Feynman Lectures -->
-        <article class="memory-card">
-          <div class="memory-number">02</div>
-          <div class="memory-content">
-            <p class="memory-text">
-              Karthik was one of the few people in the world who would pick up <strong>Feynman lectures</strong> for reading for fun. It showed his immense interest in Physics and love for science.
-            </p>
-            <div class="memory-quote">
-              <span class="quote-mark">"</span>
-              The Feynman Lectures on Physics is perhaps the most popular physics book ever written. That Karthik read them for pleasure speaks volumes about his curiosity.
-              <span class="quote-mark">"</span>
-            </div>
+          <div class="poem-translation">
+            <h4>Translation:</h4>
+            <p>"Scavenging for food daily,<br>
+            Engaging in many petty, insignificant talks,<br>
+            With minds wilted by sorrow and suffering,<br>
+            Performing actions that bring misery to others,<br>
+            Growing old with graying hair but achieving nothing,<br>
+            Eventually succumbing to the cruel fate of death,<br>
+            Just like these laughable humans,<br>
+            Did you think I too would fall?"</p>
           </div>
-        </article>
+        </div>
+      </div>
 
-        <!-- Memory 3: IEP Project -->
-        <article class="memory-card">
-          <div class="memory-number">03</div>
-          <div class="memory-content">
-            <div class="video-container">
-              <iframe 
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
-                title="Karthik presenting his IEP project"
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-              </iframe>
-            </div>
-            <p class="memory-text">
-              <strong>Karthigeyan</strong>, presenting his IEP project, shared insightful thoughts on the crucial role of innovation and entrepreneurship in the Indian economy. His analysis highlights how essential these elements are for driving economic growth and job creation, particularly in the face of shifting global trends.
-            </p>
-            <p class="memory-text">
-              He effectively articulates the current landscape of entrepreneurship in India, noting both the progress made in urban centers like Bangalore and the challenges faced by sectors such as agriculture and rural economies. Karthigeyan's recommendations for improving business incubators and strengthening intellectual property rights are not only timely but also reflect a deep understanding of the barriers to innovation in our country.
-            </p>
-            <p class="memory-text">
-              His commitment to fostering a vibrant entrepreneurial ecosystem is commendable, and his insights can contribute significantly to shaping policies that support sustainable economic development in India.
-            </p>
-          </div>
-        </article>
+      <!-- Memory 2: Feynman Lectures -->
+      <div class="memory-section">
+        <div class="memory-number">2</div>
+        <p class="margin-bottom-24px">
+          Karthik was one of the few people in the world who would pick up <strong>Feynman lectures</strong> for reading for fun. It showed his immense interest in Physics and love for science.
+        </p>
+      </div>
 
-        <!-- Memory 4: More Memories (Placeholder for future) -->
-        <article class="memory-card memory-add">
-          <div class="memory-number">+</div>
-          <div class="memory-content">
-            <h3 class="add-memory-title">Share Your Memory</h3>
-            <p class="memory-text">
-              Do you have a memory of Karthik you'd like to share? We'd love to hear from you.
-            </p>
-            <a href="mailto:memories@karthigeyanr.com" class="memory-btn">Submit a Memory</a>
-          </div>
-        </article>
-
+      <!-- Memory 3: IEP Project -->
+      <div class="memory-section">
+        <div class="memory-number">3</div>
+        
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+            title="Karthik presenting his IEP project"
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        <p class="margin-bottom-24px">
+          <strong>Karthigeyan</strong>, presenting his IEP project, shared insightful thoughts on the crucial role of innovation and entrepreneurship in the Indian economy. His analysis highlights how essential these elements are for driving economic growth and job creation, particularly in the face of shifting global trends.
+        </p>
+        <p class="margin-bottom-24px">
+          He effectively articulates the current landscape of entrepreneurship in India, noting both the progress made in urban centers like Bangalore and the challenges faced by sectors such as agriculture and rural economies. Karthigeyan's recommendations for improving business incubators and strengthening intellectual property rights are not only timely but also reflect a deep understanding of the barriers to innovation in our country.
+        </p>
+        <p class="margin-bottom-24px">
+          His commitment to fostering a vibrant entrepreneurial ecosystem is commendable, and his insights can contribute significantly to shaping policies that support sustainable economic development in India.
+        </p>
       </div>
 
       <!-- Navigation -->
-      <nav class="memories-nav">
+      <div class="main-nav">
         <a href="index.html" class="nav-link">← Back to Home</a>
-        <a href="https://gharelu.podbean.com/" target="_blank" rel="noopener" class="nav-link">Listen to Podcast →</a>
-      </nav>
+        <a href="https://gharelu.podbean.com/" target="_blank" class="nav-link">Listen to Podcast →</a>
+      </div>
 
     </div>
-  </main>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container-2">
       <p class="footer-text">In loving memory of Karthigeyan R</p>
       <p class="footer-subtext">Forever among the stars ✨</p>
     </div>

@@ -2,18 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <title>Karthigeyan R - A Star Among Us</title>
-  <meta name="description" content="Remembering Karthigeyan R - Astrophysicist, Innovator, Beloved Friend. A memorial website dedicated to his passion for space and astronomy."/>
+  <title>Karthigeyan R</title>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
-  <meta property="og:title" content="Karthigeyan R - A Star Among Us"/>
-  <meta property="og:description" content="Remembering Karthigeyan R - Astrophysicist, Innovator, Beloved Friend"/>
-  <meta property="og:type" content="website"/>
-  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="description" content="Remembering Karthigeyan R - Astrophysicist, Innovator, Beloved Friend"/>
   
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","Playfair Display:regular","Major Mono Display:regular"] }});</script>
   
   <!-- Styles -->
   <link href="css/webflow-style.css" rel="stylesheet" type="text/css"/>
@@ -25,163 +22,121 @@
 </head>
 
 <body class="body">
-  <!-- Animated Starfield Background -->
+  <!-- Solar System Background -->
   <div class="canvas">
     <div class="stars-bg" id="starfield"></div>
     
-    <!-- Control Buttons -->
+    <!-- Control Buttons - Horizontal Layout -->
     <div class="btn-box">
-      <button class="button real-orbits" id="btn-real-orbits" aria-label="Show real planet orbits">
-        Real ORBITS
-      </button>
-      <button class="button reset-orbits" id="btn-reset-orbits" aria-label="Adjust planet orbits">
-        Adjust Orbits
-      </button>
-      <button class="button real-size" id="btn-real-size" aria-label="Show real planet sizes">
-        Real SIZE
-      </button>
-      <button class="button reset-size" id="btn-reset-size" aria-label="Adjust planet sizes">
-        Adjust SIZE
-      </button>
-      <button class="button red-giant" id="btn-red-giant" aria-label="Special effect">
-        DON'T press this
-      </button>
+      <a href="#" class="button real-orbits w-button" id="btn-real-orbits">Real ORBITS</a>
+      <a href="#" class="button reset-orbits w-button" id="btn-reset-orbits">adjust orbits</a>
+      <a href="#" class="button real-size w-button" id="btn-real-size">Real SIZE</a>
+      <a href="#" class="button reset-size w-button" id="btn-reset-size">Adjust SIZE</a>
+      <a href="#" class="button red-giant w-button" id="btn-red-giant">DON'T press this</a>
     </div>
     
     <!-- Solar System -->
     <div class="solar-system" id="solar-system">
-      <div class="orbit neptune-orbit">
-        <div class="planet neptune" data-name="Neptune"></div>
-      </div>
-      <div class="orbit uranus-orbit">
-        <div class="planet uranus" data-name="Uranus"></div>
-      </div>
-      <div class="orbit saturn-orbit">
-        <div class="planet saturn" data-name="Saturn"></div>
-      </div>
-      <div class="orbit jupiter-orbit">
-        <div class="planet jupiter" data-name="Jupiter"></div>
-      </div>
-      <div class="orbit mars-orbit">
-        <div class="planet mars" data-name="Mars"></div>
-      </div>
-      <div class="orbit earth-orbit">
-        <div class="planet earth" data-name="Earth"></div>
-      </div>
-      <div class="orbit venus-orbit">
-        <div class="planet venus" data-name="Venus"></div>
-      </div>
-      <div class="orbit mercury-orbit">
-        <div class="planet mercury" data-name="Mercury"></div>
-      </div>
-      <div class="sun" data-name="Sun"></div>
+      <div class="orbit neptune-orbit"><div class="planet neptune"></div></div>
+      <div class="orbit uranus-orbit"><div class="planet uranus"></div></div>
+      <div class="orbit saturn-orbit"><div class="planet saturn"></div></div>
+      <div class="orbit jupiter-orbit"><div class="planet jupiter"></div></div>
+      <div class="orbit mars-orbit"><div class="planet mars"></div></div>
+      <div class="orbit earth-orbit"><div class="planet earth"></div></div>
+      <div class="orbit venus-orbit"><div class="planet venus"></div></div>
+      <div class="orbit mercury-orbit"><div class="planet mercury"></div></div>
+      <div class="sun"></div>
     </div>
     
     <!-- Planet Labels -->
-    <div class="planet-labels">
-      <span class="label" style="--angle: 0deg; --distance: 45%;">Neptune</span>
-      <span class="label" style="--angle: 45deg; --distance: 40%;">Uranus</span>
-      <span class="label" style="--angle: 90deg; --distance: 35%;">Saturn</span>
-      <span class="label" style="--angle: 135deg; --distance: 30%;">Jupiter</span>
-      <span class="label" style="--angle: 180deg; --distance: 25%;">Mars</span>
-      <span class="label" style="--angle: 225deg; --distance: 20%;">Earth</span>
-      <span class="label" style="--angle: 270deg; --distance: 15%;">Venus</span>
-      <span class="label" style="--angle: 315deg; --distance: 10%;">Mercury</span>
-    </div>
+    <div class="planet-label neptune-label">NEPTUNE</div>
+    <div class="planet-label uranus-label">URANUS</div>
+    <div class="planet-label saturn-label">Saturn</div>
+    <div class="planet-label jupiter-label">Jupiter</div>
+    <div class="planet-label mars-label">Mars</div>
+    <div class="planet-label earth-label">Earth</div>
+    <div class="planet-label venus-label">Venus</div>
+    <div class="planet-label mercury-label">Mercury</div>
   </div>
 
-  <!-- Main Content -->
-  <main class="main-content">
-    <!-- Hero Section -->
-    <section class="hero-section" id="hero">
-      <div class="container">
-        <h1 class="hero-title">
-          <span class="title-main">Karthigeyan R</span>
-          <span class="title-sub">Remembering a Star Among Us</span>
-        </h1>
+  <!-- Main Content - Scrolls over solar system -->
+  <div class="main-content-wrapper">
+    <div class="container-2">
+      <!-- Hero Section -->
+      <div class="hero-wrapper">
+        <div class="hero-split">
+          <h1 class="centered-heading">Karthigeyan R: Remembering a Star Among Us</h1>
+          <p class="margin-bottom-24px">
+            The Solar System was formed more than 4.5 Billion years ago, our Solar System is a group made of our Sun, a star and other celestial bodies orbiting around it.
+          </p>
+          <p class="margin-bottom-24px">
+            Another such star born on Earth was <strong>Karthigeyan R</strong>.
+          </p>
+          <p class="quote-text">
+            "This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."
+          </p>
+          <p class="margin-bottom-24px">
+            I think this is what Karthik would have pointed out if I had shown this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us few years back due to some complications encountered during a trek. But his star always shines bright and this website is dedicated to cherish his memories. And to be a proponent of space sciences which Karthik was so fond of. He was an Astrophysicist after all.
+          </p>
+        </div>
         
-        <div class="hero-content">
-          <div class="hero-text">
-            <p class="intro-text">
-              The Solar System was formed more than 4.5 Billion years ago, our Solar System is a group made of our Sun, a star and other celestial bodies orbiting around it.
-            </p>
-            <p class="highlight-text">
-              Another such star born on Earth was <strong>Karthigeyan R</strong>.
-            </p>
-            <blockquote class="quote">
-              "This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."
-            </blockquote>
-            <p class="description">
-              I think this is what Karthik would have pointed out if I had shown this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us few years back due to some complications encountered during a trek. But his star always shines bright and this website is dedicated to cherish his memories. And to be a proponent of space sciences which Karthik was so fond of. He was an Astrophysicist after all.
-            </p>
-          </div>
-          
-          <div class="hero-images">
-            <div class="image-grid">
-              <img src="images/karthik-photo-1.jpg" alt="Karthigeyan R" class="hero-img img-1" loading="lazy"/>
-              <img src="images/karthik-photo-2.jpg" alt="Karthik at the beach" class="hero-img img-2" loading="lazy"/>
+        <div class="hero-split hero-images">
+          <img src="images/karthik-photo-1.jpg" alt="Karthigeyan R" class="shadow-two"/>
+          <img src="images/karthik-photo-2.jpg" alt="Karthik at the beach" class="shadow-two"/>
+        </div>
+      </div>
+      
+      <!-- Dynamic Content Area (for future updates) -->
+      <div class="dynamic-content">
+        <div class="w-dyn-list">
+          <div role="list" class="w-dyn-items">
+            <div role="listitem" class="w-dyn-item">
+              <!-- Space for monthly updates -->
             </div>
           </div>
         </div>
+        <div class="w-dyn-empty">
+          <div>No items found.</div>
+        </div>
       </div>
-    </section>
-
-    <!-- Navigation Section -->
-    <nav class="main-nav" id="main-nav">
-      <div class="container">
-        <ul class="nav-list">
-          <li><a href="memories.html" class="nav-link">Memories</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" rel="noopener" class="nav-link">Photos</a></li>
-          <li><a href="astrophysics.html" class="nav-link">Astrophysics</a></li>
-          <li><a href="games.html" class="nav-link">Games</a></li>
-          <li><a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" rel="noopener" class="nav-link">Works</a></li>
-          <li><a href="https://gharelu.podbean.com/" target="_blank" rel="noopener" class="nav-link">Podcast</a></li>
-          <li><a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" rel="noopener" class="nav-link">LinkedIn</a></li>
-          <li><a href="#newsletter" class="nav-link highlight">Subscribe</a></li>
-          <li><a href="#contact" class="nav-link">Contact Us</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter-section" id="newsletter">
-      <div class="container">
-        <h2 class="section-title">Stay Connected</h2>
-        <p class="section-subtitle">Subscribe for updates on space discoveries and memorial events</p>
+      
+      <!-- Newsletter Section -->
+      <div class="newsletter-section">
+        <h2 class="centered-heading">Stay Connected</h2>
+        <p class="margin-bottom-24px">Subscribe for updates on space discoveries and memorial events</p>
         
-        <form class="newsletter-form" id="newsletter-form" action="/subscribe" method="POST">
-          <div class="form-group">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" id="name" name="name" class="form-input" required autocomplete="name"/>
-          </div>
-          <div class="form-group">
-            <label for="email" class="form-label">Email Address</label>
-            <input type="email" id="email" name="email" class="form-input" required autocomplete="email"/>
-          </div>
-          <button type="submit" class="submit-btn">Subscribe</button>
+        <form id="newsletter-form" class="newsletter-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" class="w-input" required/>
+          
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="w-input" required/>
+          
+          <input type="submit" value="Subscribe" class="w-button submit-btn"/>
         </form>
         
-        <div class="form-message success" id="form-success" role="alert" aria-live="polite">
-          Thank you for subscribing! You'll receive updates soon.
-        </div>
-        <div class="form-message error" id="form-error" role="alert" aria-live="polite">
-          Something went wrong. Please try again.
-        </div>
+        <div class="form-message success" id="form-success">Thank you for subscribing!</div>
+        <div class="form-message error" id="form-error">Something went wrong. Please try again.</div>
       </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-      <div class="container">
-        <h2 class="section-title">Get in Touch</h2>
-        <a href="mailto:contact@karthigeyanr.com" class="contact-link">Contact Us</a>
+      
+      <!-- Navigation -->
+      <div class="main-nav">
+        <a href="memories.html" class="nav-link">Memories</a>
+        <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" class="nav-link">Photos</a>
+        <a href="astrophysics.html" class="nav-link">Astrophysics</a>
+        <a href="games.html" class="nav-link">Games</a>
+        <a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" class="nav-link">Works</a>
+        <a href="https://gharelu.podbean.com/" target="_blank" class="nav-link">Podcast</a>
+        <a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" class="nav-link">LinkedIn</a>
+        <a href="#newsletter" class="nav-link highlight">Subscribe</a>
+        <a href="mailto:contact@karthigeyanr.com" class="nav-link">Contact Us</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer class="footer">
-    <div class="container">
+    <div class="container-2">
       <p class="footer-text">In loving memory of Karthigeyan R</p>
       <p class="footer-subtext">Forever among the stars ✨</p>
     </div>
