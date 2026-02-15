@@ -170,9 +170,27 @@
             border: 1px solid #fc0;
         }
         
-        /* Hide any timers */
+                /* Hide any timers */
         .timer-box, .retro-timer, .time-counter, #timeCounter, [class*="timer"] {
             display: none !important;
+        }
+        
+        /* FORCE BUTTONS TO BE VISIBLE - ADD THIS HERE */
+        .dialog-box a, .dialog-box .button {
+            display: inline-block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            z-index: 1000 !important;
+        }
+
+        .dialog-buttons {
+            display: flex !important;
+            flex-wrap: wrap !important;
+            gap: 10px !important;
+            margin-top: 25px !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
         /* Contact link */
@@ -182,21 +200,7 @@
             left: 20px;
             z-index: 1000;
             color: #f0dd0d;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            border: 1px solid #f0dd0d;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s;
-        }
-        
-        .contact-link:hover {
-            background: #f0dd0d;
-            color: #000;
-        }
+            /* ... more styles ... */
         
         /* Dialog positioning */
         .dialog-box {
@@ -336,27 +340,27 @@
         </div>
 
         <!-- MAIN DIALOG - WITH BUTTONS VISIBLE -->
-        <div class="dialog-box">
-            <div class="dialog dialog-mobile" id="mainDialog" style="display: block; opacity: 1;">
-                <h1 class="heading">Karthigeyan R: Remembering a Star Among Us</h1>
-                <div class="separator"></div>
-                <p class="p">The Solar System was formed more than 4.5 Billion years ago. Our Solar System is a group made of our Sun, a star, and other celestial bodies orbiting around it.</p>
-                <p class="p">Another such star born on Earth was Karthigeyan R.</p>
-                <p class="p">"This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."</p>
-                <p class="p">I think this is what Karthik would have pointed out if I had shown him this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us a few years back due to some complications encountered during a trek. But his star always shines bright, and this website is dedicated to cherish his memories and to be a proponent of space sciences, which Karthik was so fond of. He was an Astrophysicist after all.</p>
-                
-                <!-- ALL BUTTONS HERE - VISIBLE AND CLICKABLE -->
-                <div class="dialog-buttons">
-                    <a href="/memories" class="button real-orbits">MEMORIES</a>
-                    <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" class="button real-orbits">PHOTOS</a>
-                    <a href="https://www.space.com/" target="_blank" class="button real-orbits">ASTROPHYSICS</a>
-                    <a href="https://www.solitaireparadise.com/" target="_blank" class="button real-orbits">GAMES</a>
-                    <a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" class="button real-orbits">WORKS</a>
-                    <a href="https://gharelu.podbean.com/" target="_blank" class="button real-orbits">PODCAST</a>
-                    <a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" class="button real-orbits">LINKEDIN</a>
-                    <a href="#" id="subscribeBtn" class="button real-orbits">SUBSCRIBE</a>
-                </div>
-            </div>
+<div class="dialog-box">
+    <div class="dialog dialog-mobile" id="mainDialog" style="display: block; opacity: 1; background: rgba(0,0,0,0.9);">
+        <h1 class="heading" style="color: white; font-size: 2.2em; margin-bottom: 15px;">Karthigeyan R: Remembering a Star Among Us</h1>
+        <div class="separator" style="width: 80px; height: 2px; background: #fc0; margin-bottom: 20px;"></div>
+        <p class="p" style="color: #e0e0e0; font-size: 1em; line-height: 1.6; margin-bottom: 15px;">The Solar System was formed more than 4.5 Billion years ago. Our Solar System is a group made of our Sun, a star, and other celestial bodies orbiting around it.</p>
+        <p class="p" style="color: #e0e0e0; font-size: 1em; line-height: 1.6; margin-bottom: 15px;">Another such star born on Earth was Karthigeyan R.</p>
+        <p class="p" style="color: #e0e0e0; font-size: 1em; line-height: 1.6; margin-bottom: 15px;">"This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."</p>
+        <p class="p" style="color: #e0e0e0; font-size: 1em; line-height: 1.6; margin-bottom: 15px;">I think this is what Karthik would have pointed out if I had shown him this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us a few years back due to some complications encountered during a trek. But his star always shines bright, and this website is dedicated to cherish his memories and to be a proponent of space sciences, which Karthik was so fond of. He was an Astrophysicist after all.</p>
+        
+        <!-- BUTTONS - WITH INLINE STYLES TO ENSURE VISIBILITY -->
+        <div style="margin-top: 25px; display: flex; flex-wrap: wrap; gap: 10px;">
+            <a href="/memories" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">MEMORIES</a>
+            <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">PHOTOS</a>
+            <a href="https://www.space.com/" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">ASTROPHYSICS</a>
+            <a href="https://www.solitaireparadise.com/" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">GAMES</a>
+            <a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">WORKS</a>
+            <a href="https://gharelu.podbean.com/" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">PODCAST</a>
+            <a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">LINKEDIN</a>
+            <a href="#" id="subscribeBtn" style="background: rgba(153, 213, 255, 0.3); border: 1px solid #99d5ff; color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">SUBSCRIBE</a>
+        </div>
+    </div>
             
             <!-- Secondary Dialogs (hidden by default) -->
             <div class="dialog dialog-2" id="dialog2" style="opacity: 0; display: none;">
