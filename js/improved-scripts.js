@@ -1,6 +1,6 @@
 /**
  * KARTHIGEYAN R - IMPROVED SCRIPTS
- * Enhanced functionality for better UX
+ * Enhanced functionality while maintaining original theme
  */
 
 (function() {
@@ -13,25 +13,18 @@
     const starfield = document.getElementById('starfield');
     if (!starfield) return;
 
-    const starCount = 150;
+    const starCount = 100;
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < starCount; i++) {
       const star = document.createElement('div');
       star.className = 'star';
       
-      // Random position
       const x = Math.random() * 100;
       const y = Math.random() * 100;
-      
-      // Random size (0.5px to 3px)
-      const size = Math.random() * 2.5 + 0.5;
-      
-      // Random opacity
-      const opacity = Math.random() * 0.7 + 0.3;
-      
-      // Random animation duration
-      const duration = Math.random() * 4 + 2;
+      const size = Math.random() * 2 + 0.5;
+      const opacity = Math.random() * 0.6 + 0.2;
+      const duration = Math.random() * 3 + 2;
       
       star.style.cssText = `
         left: ${x}%;
@@ -104,7 +97,6 @@
         
         if (body.classList.contains('red-giant-mode')) {
           showNotification('☀️ The Sun has become a red giant!');
-          playSound('red-giant');
         } else {
           showNotification('Sun returned to normal');
         }
@@ -116,80 +108,25 @@
   // NOTIFICATION SYSTEM
   // ============================================
   function showNotification(message) {
-    // Remove existing notification
     const existing = document.querySelector('.notification-toast');
     if (existing) {
       existing.remove();
     }
     
-    // Create new notification
     const notification = document.createElement('div');
     notification.className = 'notification-toast';
     notification.textContent = message;
-    notification.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(100px);
-      background: rgba(0, 0, 0, 0.9);
-      color: #d4af37;
-      padding: 12px 24px;
-      border-radius: 4px;
-      border: 1px solid rgba(212, 175, 55, 0.4);
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
-      z-index: 10000;
-      opacity: 0;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    `;
     
     document.body.appendChild(notification);
     
-    // Animate in
     requestAnimationFrame(() => {
-      notification.style.opacity = '1';
-      notification.style.transform = 'translateX(-50%) translateY(0)';
+      notification.classList.add('show');
     });
     
-    // Remove after 3 seconds
     setTimeout(() => {
-      notification.style.opacity = '0';
-      notification.style.transform = 'translateX(-50%) translateY(100px)';
+      notification.classList.remove('show');
       setTimeout(() => notification.remove(), 300);
     }, 3000);
-  }
-
-  // ============================================
-  // SOUND EFFECTS (Optional)
-  // ============================================
-  function playSound(type) {
-    // Check if user prefers reduced motion/sound
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
-    
-    // Simple oscillator sound for red giant effect
-    try {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      if (type === 'red-giant') {
-        oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
-        oscillator.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 1);
-        gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
-        
-        oscillator.start(audioContext.currentTime);
-        oscillator.stop(audioContext.currentTime + 1);
-      }
-    } catch (e) {
-      // Audio not supported, silently fail
-    }
   }
 
   // ============================================
@@ -205,12 +142,10 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      const formData = new FormData(form);
-      const email = formData.get('email');
-      const name = formData.get('name');
+      const name = form.querySelector('#name').value.trim();
+      const email = form.querySelector('#email').value.trim();
       
-      // Basic validation
-      if (!email || !name) {
+      if (!name || !email) {
         showFormMessage(errorMsg, 'Please fill in all fields');
         return;
       }
@@ -220,20 +155,19 @@
         return;
       }
       
-      // Simulate form submission
       const submitBtn = form.querySelector('.submit-btn');
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Subscribing...';
+      const originalText = submitBtn.value;
+      submitBtn.value = 'Subscribing...';
       submitBtn.disabled = true;
       
-      // Simulate API call
+      // Simulate submission
       setTimeout(() => {
         showFormMessage(successMsg, `Thank you, ${name}! You've been subscribed.`);
         form.reset();
-        submitBtn.textContent = originalText;
+        submitBtn.value = originalText;
         submitBtn.disabled = false;
         
-        // Store in localStorage
+        // Store locally
         const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
         subscribers.push({
           name: name,
@@ -252,16 +186,13 @@
   function showFormMessage(element, message) {
     if (!element) return;
     
-    // Hide all messages
     document.querySelectorAll('.form-message').forEach(msg => {
       msg.classList.remove('visible');
     });
     
-    // Show specific message
     element.textContent = message;
     element.classList.add('visible');
     
-    // Auto-hide after 5 seconds
     setTimeout(() => {
       element.classList.remove('visible');
     }, 5000);
@@ -289,45 +220,12 @@
   }
 
   // ============================================
-  // NAVIGATION HIGHLIGHT ON SCROLL
-  // ============================================
-  function initNavHighlight() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    if (sections.length === 0 || navLinks.length === 0) return;
-    
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50% 0px -50% 0px',
-      threshold: 0
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, observerOptions);
-    
-    sections.forEach(section => observer.observe(section));
-  }
-
-  // ============================================
   // PARALLAX EFFECT
   // ============================================
   function initParallax() {
     const solarSystem = document.getElementById('solar-system');
     if (!solarSystem) return;
     
-    // Check for touch device
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
     if (isTouchDevice) return;
     
@@ -337,7 +235,7 @@
       if (!ticking) {
         requestAnimationFrame(function() {
           const scrolled = window.pageYOffset;
-          const rate = scrolled * 0.3;
+          const rate = scrolled * 0.2;
           solarSystem.style.transform = `translate(-50%, calc(-50% + ${rate}px))`;
           ticking = false;
         });
@@ -347,87 +245,21 @@
   }
 
   // ============================================
-  // LAZY LOADING IMAGES
-  // ============================================
-  function initLazyLoading() {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.classList.add('loaded');
-            imageObserver.unobserve(img);
-          }
-        });
-      }, {
-        rootMargin: '50px 0px'
-      });
-      
-      images.forEach(img => imageObserver.observe(img));
-    }
-  }
-
-  // ============================================
-  // KEYBOARD SHORTCUTS
-  // ============================================
-  function initKeyboardShortcuts() {
-    document.addEventListener('keydown', function(e) {
-      // Press 'R' for real orbits
-      if (e.key === 'r' || e.key === 'R') {
-        if (e.shiftKey) {
-          document.getElementById('btn-reset-orbits')?.click();
-        } else {
-          document.getElementById('btn-real-orbits')?.click();
-        }
-      }
-      
-      // Press 'S' for real size
-      if (e.key === 's' || e.key === 'S') {
-        if (e.shiftKey) {
-          document.getElementById('btn-reset-size')?.click();
-        } else {
-          document.getElementById('btn-real-size')?.click();
-        }
-      }
-      
-      // Press 'Escape' to close any modals
-      if (e.key === 'Escape') {
-        document.body.classList.remove('red-giant-mode');
-      }
-    });
-  }
-
-  // ============================================
-  // VISITOR COUNTER (Simple)
-  // ============================================
-  function initVisitorCounter() {
-    const counterKey = 'site_visits';
-    let visits = parseInt(localStorage.getItem(counterKey) || '0');
-    visits++;
-    localStorage.setItem(counterKey, visits.toString());
-    
-    // Log for debugging (can be removed in production)
-    console.log(`Visit count: ${visits}`);
-  }
-
-  // ============================================
-  // ANIMATION ON SCROLL
+  // SCROLL ANIMATIONS
   // ============================================
   function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.hero-text, .hero-images, .nav-list');
+    const animatedElements = document.querySelectorAll('.hero-split, .main-nav, .newsletter-section');
     
     if (!('IntersectionObserver' in window)) {
-      // Fallback for older browsers
-      animatedElements.forEach(el => el.classList.add('visible'));
+      animatedElements.forEach(el => el.style.opacity = '1');
       return;
     }
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in');
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
           observer.unobserve(entry.target);
         }
       });
@@ -444,36 +276,48 @@
     });
   }
 
-  // Add fade-in class styles
-  const style = document.createElement('style');
-  style.textContent = `
-    .fade-in {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-    }
-  `;
-  document.head.appendChild(style);
+  // ============================================
+  // KEYBOARD SHORTCUTS
+  // ============================================
+  function initKeyboardShortcuts() {
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'r' || e.key === 'R') {
+        if (e.shiftKey) {
+          document.getElementById('btn-reset-orbits')?.click();
+        } else {
+          document.getElementById('btn-real-orbits')?.click();
+        }
+      }
+      
+      if (e.key === 's' || e.key === 'S') {
+        if (e.shiftKey) {
+          document.getElementById('btn-reset-size')?.click();
+        } else {
+          document.getElementById('btn-real-size')?.click();
+        }
+      }
+      
+      if (e.key === 'Escape') {
+        document.body.classList.remove('red-giant-mode');
+      }
+    });
+  }
 
   // ============================================
-  // INITIALIZE EVERYTHING
+  // INITIALIZE
   // ============================================
   function init() {
     createStarfield();
     initControls();
     initNewsletterForm();
     initSmoothScroll();
-    initNavHighlight();
     initParallax();
-    initLazyLoading();
-    initKeyboardShortcuts();
-    initVisitorCounter();
     initScrollAnimations();
+    initKeyboardShortcuts();
     
     console.log('🌟 Karthigeyan R - Website Loaded');
-    console.log('💫 Keyboard shortcuts: R (orbits), S (size), Shift+R/S (reset)');
   }
 
-  // Run when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
