@@ -18,204 +18,118 @@
     <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="images/app-icon.png" rel="apple-touch-icon">
     <style>
-        /* ===== RESET & BASE ===== */
-        body {
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* ===== SOLAR SYSTEM LAYERING ===== */
-        .canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .stars-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-        
-        .system {
-            position: absolute;
-            z-index: 2;
-            pointer-events: none;
-        }
-        
-        .btn-box {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            pointer-events: auto;
-        }
-        
-        .button {
-            pointer-events: auto;
-            cursor: pointer;
-            background: rgba(153, 213, 255, 0.2);
-            border: 1px solid rgba(153, 213, 255, 0.5);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        }
-        
-        .button:hover {
-            background: rgba(153, 213, 255, 0.4);
-            border-color: rgba(153, 213, 255, 0.8);
-            box-shadow: 0 0 15px #99d5ff;
-            transform: translateY(-2px);
-        }
-        
-        .button.red-giant:hover {
-            background: rgba(255, 68, 68, 0.4);
-            border-color: #ff4444;
-            box-shadow: 0 0 15px #ff4444;
-        }
-        
-        /* ===== DIALOG BOXES ===== */
-        .dialog-box {
-            position: absolute;
-            top: 10vh;
-            left: 10vh;
-            z-index: 100;
-            max-width: 500px;
-            pointer-events: auto;
-        }
-        
-        .dialog {
-            background: rgba(0, 0, 0, 0.7);
+        /* Fix main dialog text - make it large and readable */
+        .dialog.dialog-mobile {
+            max-width: 600px;
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(148, 185, 212, 0.3);
             border-radius: 15px;
-            padding: 25px;
-            color: white;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            transition: opacity 0.5s ease;
+            padding: 30px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.7);
         }
         
         .heading {
-            color: white;
-            font-size: 2.2em;
-            margin-bottom: 15px;
-            font-weight: 300;
-        }
-        
-        .separator {
-            width: 80px;
-            height: 2px;
-            background: #fc0;
-            margin-bottom: 20px;
+            font-size: 2.5em !important;
+            line-height: 1.2 !important;
+            margin-bottom: 20px !important;
+            color: white !important;
         }
         
         .p {
-            color: #94b9d4;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 14px;
+            font-size: 1.1em !important;
+            line-height: 1.7 !important;
+            color: #e0e0e0 !important;
+            margin-bottom: 20px !important;
         }
         
-        /* ===== TIME COUNTER ===== */
-        .time-counter {
+        /* Original button styling restored */
+        .button {
+            background: rgba(153, 213, 255, 0.2) !important;
+            border: 1px solid rgba(153, 213, 255, 0.3) !important;
+            color: white !important;
+            padding: 8px 16px !important;
+            border-radius: 20px !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.5px !important;
+            transition: all 0.3s !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            margin-right: 8px !important;
+            margin-bottom: 8px !important;
+        }
+        
+        .button:hover {
+            background: rgba(153, 213, 255, 0.4) !important;
+            border-color: #99d5ff !important;
+            box-shadow: 0 0 15px #99d5ff !important;
+        }
+        
+        /* Fix image positioning - back to right center */
+        .image2, .image3 {
+            position: fixed !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            width: 300px !important;
+            border-radius: 15px !important;
+            box-shadow: 0 0 30px rgba(0,0,0,0.7), 0 0 0 2px rgba(255,215,0,0.3) !important;
+            z-index: 100 !important;
+            border: 1px solid rgba(255,215,0,0.3) !important;
+            object-fit: cover !important;
+            aspect-ratio: auto !important;
+        }
+        
+        .image2 {
+            right: 50px !important;
+            width: 320px !important;
+        }
+        
+        .image3 {
+            right: 400px !important;
+            width: 280px !important;
+        }
+        
+        /* Image gallery styling for the two boxes */
+        .image-gallery-container {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 10000;
-            font-family: 'Major Mono Display', monospace;
-            color: #33ff33;
-            text-shadow: 0 0 5px #00ff00;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid #33ff33;
-            font-size: 18px;
-            letter-spacing: 2px;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
-            pointer-events: auto;
-        }
-        
-        /* ===== CONTACT LINK ===== */
-        .contact-link {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 10000;
-            color: #f0dd0d;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid #f0dd0d;
-            backdrop-filter: blur(4px);
-            transition: all 0.3s;
-            letter-spacing: 1px;
-            pointer-events: auto;
-        }
-        
-        .contact-link:hover {
-            background: #f0dd0d;
-            color: #000;
-            box-shadow: 0 0 20px #f0dd0d;
-        }
-        
-        /* ===== GALLERY SECTION ===== */
-        .gallery-container {
-            position: fixed;
-            bottom: 120px;
-            right: 30px;
-            z-index: 5000;
+            top: 50%;
+            right: 50px;
+            transform: translateY(-50%);
             display: flex;
             gap: 20px;
-            pointer-events: auto;
+            z-index: 100;
+            pointer-events: none;
         }
         
         .gallery-box {
-            width: 260px;
-            height: 320px;
+            width: 300px;
+            height: 400px;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
             position: relative;
-            transition: transform 0.3s;
+            pointer-events: auto;
         }
         
-        .gallery-box:hover {
-            transform: scale(1.02);
-            border-color: rgba(153, 213, 255, 0.5);
-            box-shadow: 0 0 30px #99d5ff33;
+        .gallery-box.large {
+            width: 320px;
+            height: 420px;
+        }
+        
+        .gallery-box.small {
+            width: 280px;
+            height: 380px;
         }
         
         .gallery-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.5s ease;
+            display: block;
         }
         
         .gallery-controls {
@@ -232,7 +146,7 @@
             height: 36px;
             border-radius: 50%;
             background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.5);
             color: white;
             display: flex;
             align-items: center;
@@ -245,211 +159,112 @@
         }
         
         .gallery-btn:hover {
-            background: rgba(153, 213, 255, 0.8);
-            border-color: white;
+            background: rgba(255, 215, 0, 0.8);
             color: black;
-            transform: scale(1.1);
         }
         
-        .gallery-caption {
+        .image-caption {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
             color: white;
-            padding: 30px 15px 10px;
-            font-size: 12px;
+            padding: 30px 15px 15px;
+            font-size: 14px;
             font-family: 'Open Sans', sans-serif;
             text-align: center;
             opacity: 0;
             transition: opacity 0.3s;
-            pointer-events: none;
         }
         
-        .gallery-box:hover .gallery-caption {
+        .gallery-box:hover .image-caption {
             opacity: 1;
         }
         
-        /* ===== IMAGE INDICATOR ===== */
-        .image-indicator {
+        .image-counter {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(0,0,0,0.6);
-            color: #94b9d4;
+            background: rgba(0,0,0,0.7);
+            color: #fc0;
             padding: 4px 8px;
             border-radius: 12px;
-            font-size: 10px;
+            font-size: 12px;
             font-family: 'Major Mono Display', monospace;
-            border: 1px solid #94b9d4;
+            border: 1px solid #fc0;
         }
         
-        /* ===== FORM SECTION ===== */
-        .form-container {
+        /* Hide any timers */
+        .timer-box, .retro-timer, .time-counter, #timeCounter, [class*="timer"] {
+            display: none !important;
+        }
+        
+        /* Contact link styling */
+        .contact-link {
             position: fixed;
-            bottom: 120px;
-            left: 30px;
-            z-index: 5000;
-            width: 280px;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(148, 185, 212, 0.3);
-            border-radius: 15px;
-            padding: 20px;
-            color: white;
-            pointer-events: auto;
-        }
-        
-        .form-container label {
-            color: #94b9d4;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-            display: block;
-        }
-        
-        .form-container input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid #94b9d4;
-            border-radius: 8px;
-            color: white;
-            font-size: 14px;
-        }
-        
-        .form-container input:focus {
-            outline: none;
-            border-color: #fc0;
-            box-shadow: 0 0 10px #fc0;
-        }
-        
-        .form-container .w-button {
-            width: 100%;
-            padding: 12px;
-            background: #94b9d4;
-            color: black;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .form-container .w-button:hover {
-            background: #fc0;
-            box-shadow: 0 0 15px #fc0;
-        }
-        
-        .w-form-done, .w-form-fail {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 12px;
-        }
-        
-        .w-form-done {
-            background: rgba(0,255,0,0.2);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-        }
-        
-        .w-form-fail {
-            background: rgba(255,0,0,0.2);
-            border: 1px solid #ff0000;
-            color: #ff0000;
-        }
-        
-        /* ===== SOCIAL LINKS SECTION ===== */
-        .social-links {
-            position: fixed;
-            top: 20px;
+            bottom: 20px;
             left: 20px;
-            z-index: 10000;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            max-width: 500px;
-            pointer-events: auto;
-        }
-        
-        .social-btn {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(153, 213, 255, 0.3);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            z-index: 1000;
+            color: #f0dd0d;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 20px;
+            border-radius: 30px;
             text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            border: 1px solid #f0dd0d;
+            backdrop-filter: blur(4px);
             transition: all 0.3s;
-            white-space: nowrap;
         }
         
-        .social-btn:hover {
-            background: rgba(153, 213, 255, 0.3);
-            border-color: #99d5ff;
-            transform: translateY(-2px);
-            box-shadow: 0 0 15px #99d5ff;
+        .contact-link:hover {
+            background: #f0dd0d;
+            color: #000;
         }
         
-        .social-btn.memories {
-            background: rgba(255, 204, 0, 0.2);
-            border-color: #fc0;
+        /* Fix dialog positioning */
+        .dialog-box {
+            position: absolute;
+            top: 10vh;
+            left: 10vh;
+            z-index: 200;
+            max-width: 600px;
         }
         
-        .social-btn.memories:hover {
-            background: rgba(255, 204, 0, 0.4);
-            box-shadow: 0 0 15px #fc0;
+        /* Ensure solar system is visible */
+        .system {
+            z-index: 10;
         }
         
-        /* ===== RESPONSIVE ===== */
+        .stars-bg {
+            z-index: 5;
+        }
+        
+        /* Mobile adjustments */
         @media screen and (max-width: 991px) {
-            .gallery-container, .form-container, .social-links {
+            .image-gallery-container, .dialog-box {
                 display: none;
             }
-            .time-counter, .contact-link {
-                font-size: 14px;
-            }
-        }
-        
-        /* ===== ANIMATIONS ===== */
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #33ff33; }
-            50% { text-shadow: 0 0 15px #33ff33, 0 0 5px #ffff00; }
-            100% { text-shadow: 0 0 5px #33ff33; }
-        }
-        
-        .time-counter {
-            animation: glow 2s infinite;
         }
     </style>
 </head>
 
 <body class="body">
-    <!-- Solar System Canvas (unchanged structure, just ensure proper layering) -->
     <div class="canvas">
         <div class="stars-bg"></div>
         
-        <!-- Top Button Panel - NOW INCLUDES MEMORIES BUTTON -->
+        <!-- Top Button Panel - Only the 5 original buttons -->
         <div class="btn-box">
             <a href="#" id="realOrbitsBtn" class="button real-orbits">Real ORBITS</a>
             <a href="#" id="resetOrbitsBtn" class="button reset-orbits">adjust orbits</a>
             <a href="#" id="realSizeBtn" class="button real-size">Real SIZE</a>
             <a href="#" id="resetSizeBtn" class="button reset-size">Adjust SIZE</a>
             <a href="#" id="redGiantBtn" class="button red-giant">DON'T press this</a>
-            <a href="/memories" id="memoriesTopBtn" class="button memories" style="background: rgba(255, 204, 0, 0.2); border-color: #fc0;">★ MEMORIES</a>
         </div>
 
         <!-- Solar System -->
         <div class="system" id="solarSystem">
-            <!-- ... (all planet orbits remain exactly the same) ... -->
             <div class="orbit orbit-neptune">
                 <div class="planet-box outer neptune">
                     <div class="planet planet-neptune"><div class="planet-shadow"></div></div>
@@ -546,16 +361,30 @@
             </div>
         </div>
 
-        <!-- Dialog Box (unchanged) -->
+        <!-- MAIN DIALOG - Large readable text with ALL buttons inside -->
         <div class="dialog-box">
             <div class="dialog dialog-mobile" id="mainDialog">
                 <h1 class="heading">Karthigeyan R: Remembering a Star Among Us</h1>
                 <div class="separator"></div>
-                <p class="p">The Solar System was formed more than 4.5 Billion years ago, our Solar System is a group made of our Sun, a star and other the celestial bodies orbiting around it. <br>Another such star born on Earth was Karthigeyan R.</p>
-                <p class="p">"This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."<br><br> I think this is what Karthik would have pointed out if I had shown this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us few years back due to some complications encountered during a trek. But his star always shines bright and this website is dedicated to cherish his memories. And to be a proponent of space sciences which Karthik was so found off. He was an Astrophysist after all.</p>
+                <p class="p">The Solar System was formed more than 4.5 Billion years ago. Our Solar System is a group made of our Sun, a star, and other celestial bodies orbiting around it.</p>
+                <p class="p">Another such star born on Earth was Karthigeyan R.</p>
+                <p class="p">"This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."</p>
+                <p class="p">I think this is what Karthik would have pointed out if I had shown him this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us a few years back due to some complications encountered during a trek. But his star always shines bright, and this website is dedicated to cherish his memories and to be a proponent of space sciences, which Karthik was so fond of. He was an Astrophysicist after all.</p>
+                
+                <!-- ALL BUTTONS HERE - Exactly as original -->
+                <div style="margin-top: 30px;">
+                    <a href="/memories" class="button real-orbits">MEMORIES</a>
+                    <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" class="button real-orbits">PHOTOS</a>
+                    <a href="https://www.space.com/" target="_blank" class="button real-orbits">ASTROPHYSICS</a>
+                    <a href="https://www.solitaireparadise.com/" target="_blank" class="button real-orbits">GAMES</a>
+                    <a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" class="button real-orbits">WORKS</a>
+                    <a href="https://gharelu.podbean.com/" target="_blank" class="button real-orbits">PODCAST</a>
+                    <a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" class="button real-orbits">LINKEDIN</a>
+                    <a href="#" id="subscribeBtn" class="button real-orbits">SUBSCRIBE</a>
+                </div>
             </div>
             
-            <!-- Secondary Dialogs (all remain the same) -->
+            <!-- Secondary Dialogs -->
             <div class="dialog dialog-2" id="dialog2" style="opacity: 0; display: none;">
                 <h1 class="heading">Where did they go?</h1>
                 <div class="separator"></div>
@@ -595,6 +424,49 @@
             </div>
         </div>
 
+        <!-- Image Gallery - Two boxes at right center -->
+        <div class="image-gallery-container" id="galleryContainer">
+            <!-- First box (larger - like original image2) -->
+            <div class="gallery-box large" id="galleryBox1">
+                <img src="images/final.jpg" alt="Karthik at observatory" class="gallery-image" id="galleryImg1" 
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Image 1</text></svg>'">
+                <div class="image-counter" id="counter1">1/10</div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" id="prevBtn1">←</button>
+                    <button class="gallery-btn" id="nextBtn1">→</button>
+                </div>
+                <div class="image-caption" id="caption1">Karthik at Kodaikanal Solar Observatory</div>
+            </div>
+            
+            <!-- Second box (smaller - like original image3) -->
+            <div class="gallery-box small" id="galleryBox2">
+                <img src="images/img-20190908-wa0007.jpg" alt="Karthik in Singapore" class="gallery-image" id="galleryImg2"
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Image 2</text></svg>'">
+                <div class="image-counter" id="counter2">1/10</div>
+                <div class="gallery-controls">
+                    <button class="gallery-btn" id="prevBtn2">←</button>
+                    <button class="gallery-btn" id="nextBtn2">→</button>
+                </div>
+                <div class="image-caption" id="caption2">Karthik on his trip to Singapore</div>
+            </div>
+        </div>
+
+        <!-- Subscribe Form (hidden by default) -->
+        <div class="form-container" id="formContainer" style="display: none; position: fixed; bottom: 30px; left: 30px; z-index: 1000; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 20px; border-radius: 15px; border: 1px solid #fc0; width: 280px;">
+            <form id="email-form" name="email-form" method="get">
+                <label for="name" style="color: #94b9d4; display: block; margin-bottom: 5px;">Name</label>
+                <input type="text" id="name" style="width: 100%; padding: 8px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 1px solid #94b9d4; border-radius: 5px; color: white;">
+                <label for="email" style="color: #94b9d4; display: block; margin-bottom: 5px;">Email</label>
+                <input type="email" id="email" required style="width: 100%; padding: 8px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 1px solid #94b9d4; border-radius: 5px; color: white;">
+                <input type="submit" value="Subscribe" style="width: 100%; padding: 10px; background: #fc0; color: black; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+            </form>
+            <div class="w-form-done" style="display: none; color: #00ff00; margin-top: 10px;">Thank you!</div>
+            <div class="w-form-fail" style="display: none; color: #ff0000; margin-top: 10px;">Error!</div>
+        </div>
+
+        <!-- Contact Link -->
+        <a href="mailto:sushruthk9@gmail.com" class="contact-link">✉ CONTACT US</a>
+
         <!-- Mobile Message -->
         <div class="mobile-message">
             <div class="dialog dialog-mobile">
@@ -605,77 +477,12 @@
         </div>
     </div>
 
-    <!-- ===== NEW UI ELEMENTS ===== -->
-    
-    <!-- Social Links Panel (Top Left) -->
-    <div class="social-links">
-        <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" class="social-btn">📸 PHOTOS</a>
-        <a href="https://www.space.com/" target="_blank" class="social-btn">🔭 ASTROPHYSICS</a>
-        <a href="https://www.solitaireparadise.com/" target="_blank" class="social-btn">🎮 GAMES</a>
-        <a href="https://drive.google.com/drive/folders/1nAe65JITvmdYnGPk-qVL0FsQFTHBJmDk?usp=sharing" target="_blank" class="social-btn">📁 WORKS</a>
-        <a href="https://gharelu.podbean.com/" target="_blank" class="social-btn">🎙️ PODCAST</a>
-        <a href="https://in.linkedin.com/in/karthigeyan-r-a287982b" target="_blank" class="social-btn">💼 LINKEDIN</a>
-        <a href="#email" class="social-btn" id="subscribeBtn">📧 SUBSCRIBE</a>
-    </div>
-
-    <!-- Simple Time Counter (No "T-MINUS") -->
-    <div class="time-counter" id="timeCounter">
-        <span id="timeDisplay">00:00:00</span>
-    </div>
-
-    <!-- Contact Link -->
-    <a href="mailto:sushruthk9@gmail.com" class="contact-link">✉ CONTACT US</a>
-
-    <!-- Gallery Container - Two Boxes with Controls -->
-    <div class="gallery-container">
-        <!-- Gallery Box 1 -->
-        <div class="gallery-box" id="galleryBox1">
-            <img src="images/final.jpg" alt="Karthik at observatory" class="gallery-image" id="galleryImg1">
-            <div class="image-indicator" id="indicator1">1/10</div>
-            <div class="gallery-controls">
-                <button class="gallery-btn" id="prevBtn1">←</button>
-                <button class="gallery-btn" id="nextBtn1">→</button>
-            </div>
-            <div class="gallery-caption" id="caption1">Karthik at Kodaikanal Solar Observatory</div>
-        </div>
-        
-        <!-- Gallery Box 2 -->
-        <div class="gallery-box" id="galleryBox2">
-            <img src="images/img-20190908-wa0007.jpg" alt="Karthik in Singapore" class="gallery-image" id="galleryImg2">
-            <div class="image-indicator" id="indicator2">1/10</div>
-            <div class="gallery-controls">
-                <button class="gallery-btn" id="prevBtn2">←</button>
-                <button class="gallery-btn" id="nextBtn2">→</button>
-            </div>
-            <div class="gallery-caption" id="caption2">Karthik on his trip to Singapore</div>
-        </div>
-    </div>
-
-    <!-- Form Container (Clean, Non-Black Box) -->
-    <div class="form-container" id="formContainer" style="display: none;">
-        <form id="email-form" name="email-form" data-name="Email Form" method="get">
-            <label for="name">Name</label>
-            <input class="w-input" maxlength="256" name="name" data-name="Name" type="text" id="name">
-            <label for="email">Email Address</label>
-            <input class="w-input" maxlength="256" name="email" data-name="Email" type="email" id="email" required="">
-            <input type="submit" data-wait="Please wait..." class="w-button" value="Subscribe">
-        </form>
-        <div class="w-form-done">
-            <div>Thank you! Your submission has been received!</div>
-        </div>
-        <div class="w-form-fail">
-            <div>Oops! Something went wrong while submitting the form.</div>
-        </div>
-    </div>
-
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/webflow-script.js" type="text/javascript"></script>
 
     <script>
         $(document).ready(function() {
-            // ===== IMAGE GALLERY SETUP =====
-            
-            // Comprehensive list of all images from the folder
+            // ===== COMPLETE IMAGE LIST WITH VALID PATHS =====
             const imageList = [
                 { src: 'images/final.jpg', caption: 'Karthik at Kodaikanal Solar Observatory' },
                 { src: 'images/final-p-500.jpg', caption: 'Karthik at Observatory (500px)' },
@@ -689,29 +496,25 @@
                 { src: 'images/20191226_131622-p-1600.jpg', caption: 'Karthik at Observatory (1600px)' },
                 { src: 'images/20191226_131622-p-2000.jpg', caption: 'Karthik at Observatory (2000px)' },
                 { src: 'images/20191226_131622-p-2600.jpg', caption: 'Karthik at Observatory (2600px)' },
-                { src: 'images/20191226_131622-p-3200.jpg', caption: 'Karthik at Observatory (3200px)' },
-                { src: 'images/placeholder-202.svg', caption: 'Placeholder Image' },
-                { src: 'images/webflow-badge-icon-d2.89e12c322e.svg', caption: 'Webflow Badge Icon' },
-                { src: 'images/webflow-badge-text-d2.c82cec3b78.svg', caption: 'Webflow Badge Text' }
+                { src: 'images/20191226_131622-p-3200.jpg', caption: 'Karthik at Observatory (3200px)' }
             ];
             
-            // State for gallery 1
+            // State for galleries
             let currentIndex1 = 0;
-            // State for gallery 2 (start with a different image)
-            let currentIndex2 = 4; // Start with the Singapore image
+            let currentIndex2 = 4; // Start with Singapore image
             
             // Update gallery 1
             function updateGallery1() {
                 $('#galleryImg1').attr('src', imageList[currentIndex1].src);
                 $('#caption1').text(imageList[currentIndex1].caption);
-                $('#indicator1').text((currentIndex1 + 1) + '/' + imageList.length);
+                $('#counter1').text((currentIndex1 + 1) + '/' + imageList.length);
             }
             
             // Update gallery 2
             function updateGallery2() {
                 $('#galleryImg2').attr('src', imageList[currentIndex2].src);
                 $('#caption2').text(imageList[currentIndex2].caption);
-                $('#indicator2').text((currentIndex2 + 1) + '/' + imageList.length);
+                $('#counter2').text((currentIndex2 + 1) + '/' + imageList.length);
             }
             
             // Initialize galleries
@@ -755,22 +558,6 @@
                 updateGallery1();
                 updateGallery2();
             }, 8000);
-            
-            // ===== TIME COUNTER (No T-MINUS) =====
-            let seconds = 0;
-            const timeDisplay = document.getElementById('timeDisplay');
-            
-            function formatTime(totalSeconds) {
-                const hours = Math.floor(totalSeconds / 3600);
-                const minutes = Math.floor((totalSeconds % 3600) / 60);
-                const secs = totalSeconds % 60;
-                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-            }
-            
-            setInterval(function() {
-                seconds++;
-                timeDisplay.textContent = formatTime(seconds);
-            }, 1000);
             
             // ===== DIALOG MANAGEMENT =====
             let currentDialog = $('#mainDialog');
@@ -848,20 +635,20 @@
                 e.preventDefault();
                 resetSystem();
                 showDialog($('#dialogUndo'));
-                setTimeout(resetToMainDialog, 5000);
+                setTimeout(resetToMainDialog, 4000);
             });
             
-            // ===== SUBSCRIBE BUTTON =====
+            // Subscribe button shows form
             $('#subscribeBtn').click(function(e) {
                 e.preventDefault();
                 $('#formContainer').slideToggle(300);
             });
             
-            // ===== FORM HANDLING =====
+            // Form submission
             $('#email-form').submit(function(e) {
                 e.preventDefault();
-                $(this).parent().find('.w-form-done').show();
                 $(this).hide();
+                $(this).parent().find('.w-form-done').show();
             });
             
             // Initialize
