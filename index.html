@@ -20,8 +20,8 @@
     <style>
         /* Fix main dialog text - make it large and readable */
         .dialog.dialog-mobile {
-            max-width: 600px;
-            background: rgba(0, 0, 0, 0.75);
+            max-width: 650px;
+            background: rgba(0, 0, 0, 0.8);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(148, 185, 212, 0.3);
             border-radius: 15px;
@@ -30,20 +30,20 @@
         }
         
         .heading {
-            font-size: 2.5em !important;
+            font-size: 2.2em !important;
             line-height: 1.2 !important;
-            margin-bottom: 20px !important;
+            margin-bottom: 15px !important;
             color: white !important;
         }
         
         .p {
-            font-size: 1.1em !important;
-            line-height: 1.7 !important;
+            font-size: 1em !important;
+            line-height: 1.6 !important;
             color: #e0e0e0 !important;
-            margin-bottom: 20px !important;
+            margin-bottom: 15px !important;
         }
         
-        /* Original button styling restored */
+        /* Button styling - MUST BE VISIBLE */
         .button {
             background: rgba(153, 213, 255, 0.2) !important;
             border: 1px solid rgba(153, 213, 255, 0.3) !important;
@@ -58,6 +58,7 @@
             display: inline-block !important;
             margin-right: 8px !important;
             margin-bottom: 8px !important;
+            cursor: pointer !important;
         }
         
         .button:hover {
@@ -66,31 +67,7 @@
             box-shadow: 0 0 15px #99d5ff !important;
         }
         
-        /* Fix image positioning - back to right center */
-        .image2, .image3 {
-            position: fixed !important;
-            top: 50% !important;
-            transform: translateY(-50%) !important;
-            width: 300px !important;
-            border-radius: 15px !important;
-            box-shadow: 0 0 30px rgba(0,0,0,0.7), 0 0 0 2px rgba(255,215,0,0.3) !important;
-            z-index: 100 !important;
-            border: 1px solid rgba(255,215,0,0.3) !important;
-            object-fit: cover !important;
-            aspect-ratio: auto !important;
-        }
-        
-        .image2 {
-            right: 50px !important;
-            width: 320px !important;
-        }
-        
-        .image3 {
-            right: 400px !important;
-            width: 280px !important;
-        }
-        
-        /* Image gallery styling for the two boxes */
+        /* Image gallery positioning - right center */
         .image-gallery-container {
             position: fixed;
             top: 50%;
@@ -103,8 +80,6 @@
         }
         
         .gallery-box {
-            width: 300px;
-            height: 400px;
             background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -200,7 +175,7 @@
             display: none !important;
         }
         
-        /* Contact link styling */
+        /* Contact link */
         .contact-link {
             position: fixed;
             bottom: 20px;
@@ -223,22 +198,21 @@
             color: #000;
         }
         
-        /* Fix dialog positioning */
+        /* Dialog positioning */
         .dialog-box {
             position: absolute;
             top: 10vh;
             left: 10vh;
             z-index: 200;
-            max-width: 600px;
+            max-width: 650px;
         }
         
-        /* Ensure solar system is visible */
-        .system {
-            z-index: 10;
-        }
-        
-        .stars-bg {
-            z-index: 5;
+        /* Button container in dialog */
+        .dialog-buttons {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
         
         /* Mobile adjustments */
@@ -361,9 +335,9 @@
             </div>
         </div>
 
-        <!-- MAIN DIALOG - Large readable text with ALL buttons inside -->
+        <!-- MAIN DIALOG - WITH BUTTONS VISIBLE -->
         <div class="dialog-box">
-            <div class="dialog dialog-mobile" id="mainDialog">
+            <div class="dialog dialog-mobile" id="mainDialog" style="display: block; opacity: 1;">
                 <h1 class="heading">Karthigeyan R: Remembering a Star Among Us</h1>
                 <div class="separator"></div>
                 <p class="p">The Solar System was formed more than 4.5 Billion years ago. Our Solar System is a group made of our Sun, a star, and other celestial bodies orbiting around it.</p>
@@ -371,8 +345,8 @@
                 <p class="p">"This is a top-view model of the Solar System, and as familiar as it seems, it's very different than it really is."</p>
                 <p class="p">I think this is what Karthik would have pointed out if I had shown him this site. This website is a place in the cosmos dedicated in remembrance of Karthik. He left us a few years back due to some complications encountered during a trek. But his star always shines bright, and this website is dedicated to cherish his memories and to be a proponent of space sciences, which Karthik was so fond of. He was an Astrophysicist after all.</p>
                 
-                <!-- ALL BUTTONS HERE - Exactly as original -->
-                <div style="margin-top: 30px;">
+                <!-- ALL BUTTONS HERE - VISIBLE AND CLICKABLE -->
+                <div class="dialog-buttons">
                     <a href="/memories" class="button real-orbits">MEMORIES</a>
                     <a href="https://drive.google.com/drive/folders/1YAKjFIttKeO1TK4yuroQxwFYmIgQTOnS?usp=sharing" target="_blank" class="button real-orbits">PHOTOS</a>
                     <a href="https://www.space.com/" target="_blank" class="button real-orbits">ASTROPHYSICS</a>
@@ -384,38 +358,48 @@
                 </div>
             </div>
             
-            <!-- Secondary Dialogs -->
+            <!-- Secondary Dialogs (hidden by default) -->
             <div class="dialog dialog-2" id="dialog2" style="opacity: 0; display: none;">
                 <h1 class="heading">Where did they go?</h1>
                 <div class="separator"></div>
                 <p class="p">See those pixels orbiting that yellow center? You guessed it, those are the planets. As large as they can be, they seem like grains of dust, compared with the vastness that is our Solar System.</p>
                 <p class="p">The rocky planets of the Inner Solar System are orbiting tightly together, while the gas giants are chilling at a comfortable distance from the Sun.</p>
-                <a href="#" id="goBackFromDialog2" class="button reset-orbits">let's go back</a>
+                <div class="dialog-buttons">
+                    <a href="#" id="goBackFromDialog2" class="button reset-orbits">let's go back</a>
+                </div>
             </div>
             <div class="dialog dialog-3" id="dialog3" style="opacity: 0; display: none;">
                 <h1 class="heading">That's more like it!</h1>
                 <div class="separator"></div>
                 <p class="p">Now we can see all the planets clearly, from Mercury to Neptune.</p>
                 <p class="p">By the way, there's one more thing that's distorted in this model. Can you guess what it is?</p>
-                <a href="#" id="whatIsItBtn" class="button real-size">what is it?</a>
+                <div class="dialog-buttons">
+                    <a href="#" id="whatIsItBtn" class="button real-size">what is it?</a>
+                </div>
             </div>
             <div class="dialog dialog-4" id="dialog4" style="opacity: 0; display: none;">
                 <h1 class="heading">The Sun is really Huge!</h1>
                 <div class="separator"></div>
                 <p class="p">How huge, you ask? It is about 99.8% of the total mass of our Solar System.</p>
-                <a href="#" id="adjustSizesBtn" class="button reset-size">adjust sizes</a>
+                <div class="dialog-buttons">
+                    <a href="#" id="adjustSizesBtn" class="button reset-size">adjust sizes</a>
+                </div>
             </div>
             <div class="dialog dialog-5" id="dialog5" style="opacity: 0; display: none;">
                 <h1 class="heading">Here we go!</h1>
                 <div class="separator"></div>
                 <p class="p">Here's a more familiar sight! This model may not be accurate, but it's definitely more useful.</p>
-                <a href="#" id="dontPressThisBtn" class="button red-giant">DON'T press this</a>
+                <div class="dialog-buttons">
+                    <a href="#" id="dontPressThisBtn" class="button red-giant">DON'T press this</a>
+                </div>
             </div>
             <div class="dialog dialog-red" id="dialogRed" style="opacity: 0; display: none;">
                 <h1 class="heading">This can't be good!</h1>
                 <div class="separator"></div>
                 <p class="p">In 5.4 billion years, the Sun will enter the red giant phase.</p>
-                <a href="#" id="undoRedGiantBtn" class="button red-giant">Let's undo that</a>
+                <div class="dialog-buttons">
+                    <a href="#" id="undoRedGiantBtn" class="button red-giant">Let's undo that</a>
+                </div>
             </div>
             <div class="dialog dialog-undo" id="dialogUndo" style="opacity: 0; display: none;">
                 <h1 class="heading">That's far in the future</h1>
@@ -426,11 +410,11 @@
 
         <!-- Image Gallery - Two boxes at right center -->
         <div class="image-gallery-container" id="galleryContainer">
-            <!-- First box (larger - like original image2) -->
+            <!-- First box (larger) -->
             <div class="gallery-box large" id="galleryBox1">
                 <img src="images/final.jpg" alt="Karthik at observatory" class="gallery-image" id="galleryImg1" 
-                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Image 1</text></svg>'">
-                <div class="image-counter" id="counter1">1/10</div>
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Loading...</text></svg>'">
+                <div class="image-counter" id="counter1">1/13</div>
                 <div class="gallery-controls">
                     <button class="gallery-btn" id="prevBtn1">←</button>
                     <button class="gallery-btn" id="nextBtn1">→</button>
@@ -438,11 +422,11 @@
                 <div class="image-caption" id="caption1">Karthik at Kodaikanal Solar Observatory</div>
             </div>
             
-            <!-- Second box (smaller - like original image3) -->
+            <!-- Second box (smaller) -->
             <div class="gallery-box small" id="galleryBox2">
                 <img src="images/img-20190908-wa0007.jpg" alt="Karthik in Singapore" class="gallery-image" id="galleryImg2"
-                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Image 2</text></svg>'">
-                <div class="image-counter" id="counter2">1/10</div>
+                     onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\' viewBox=\'0 0 100 100\'><rect width=\'100\' height=\'100\' fill=\'%23333\'/><text x=\'10\' y=\'50\' fill=\'%23fc0\' font-size=\'14\' font-family=\'Arial\'>Loading...</text></svg>'">
+                <div class="image-counter" id="counter2">1/13</div>
                 <div class="gallery-controls">
                     <button class="gallery-btn" id="prevBtn2">←</button>
                     <button class="gallery-btn" id="nextBtn2">→</button>
@@ -482,7 +466,7 @@
 
     <script>
         $(document).ready(function() {
-            // ===== COMPLETE IMAGE LIST WITH VALID PATHS =====
+            // ===== COMPLETE IMAGE LIST =====
             const imageList = [
                 { src: 'images/final.jpg', caption: 'Karthik at Kodaikanal Solar Observatory' },
                 { src: 'images/final-p-500.jpg', caption: 'Karthik at Observatory (500px)' },
@@ -569,7 +553,7 @@
             
             function showDialog(dialogElement) {
                 hideAllDialogs();
-                dialogElement.show().animate({ opacity: 1 }, 500);
+                dialogElement.show().css('opacity', '1');
                 currentDialog = dialogElement;
             }
             
