@@ -19,13 +19,126 @@
     <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
     <link href="images/app-icon.png" rel="apple-touch-icon">
     <style>
-        body { background-color: #000; color: #fff; }
-        .hero-heading-center { background-color: #111; border-bottom-color: #333; }
-        .text-block-3, .text-block-4 { color: #ccc; font-size: 18px; line-height: 1.6; margin-bottom: 30px; }
-        .youtube { margin-top: 30px; margin-bottom: 30px; }
+        body { 
+            background-color: #000; 
+            color: #fff; 
+            font-family: 'Open Sans', sans-serif;
+        }
+        .hero-heading-center { 
+            background-color: #111; 
+            border-bottom-color: #333; 
+        }
+        .text-block-3, .text-block-4 { 
+            color: #ccc; 
+            font-size: 18px; 
+            line-height: 1.6; 
+            margin-bottom: 30px; 
+            background: rgba(0,0,0,0.5);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 3px solid #fc0;
+        }
+        .youtube { 
+            margin-top: 30px; 
+            margin-bottom: 30px; 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+        
+        /* Retro Timer */
+        .retro-timer {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+            font-family: 'Major Mono Display', monospace;
+            color: #33ff33;
+            text-shadow: 0 0 5px #00ff00;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #33ff33;
+            font-size: 14px;
+            letter-spacing: 2px;
+            backdrop-filter: blur(3px);
+            box-shadow: 0 0 15px rgba(51, 255, 51, 0.3);
+        }
+        
+        .retro-timer span {
+            font-weight: bold;
+            color: #ffff00;
+            text-shadow: 0 0 8px #ffaa00;
+            margin-left: 5px;
+        }
+        
+        .contact-link {
+            position: fixed;
+            bottom: 70px;
+            left: 20px;
+            z-index: 1001;
+            color: #f0dd0d;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            border: 1px solid #f0dd0d;
+            backdrop-filter: blur(3px);
+            transition: all 0.3s;
+        }
+        
+        .contact-link:hover {
+            background: #f0dd0d;
+            color: #000;
+        }
+        
+        .back-link {
+            position: fixed;
+            bottom: 120px;
+            left: 20px;
+            z-index: 1002;
+            background: rgba(153, 213, 255, 0.3);
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border: 1px solid #99d5ff;
+            backdrop-filter: blur(3px);
+            transition: all 0.3s;
+        }
+        
+        .back-link:hover {
+            background: #99d5ff;
+            color: #000;
+        }
+        
+        @keyframes pulse {
+            0% { text-shadow: 0 0 5px #00ff00; }
+            50% { text-shadow: 0 0 15px #00ff00, 0 0 5px #ffff00; }
+            100% { text-shadow: 0 0 5px #00ff00; }
+        }
+        
+        .retro-timer {
+            animation: pulse 2s infinite;
+        }
     </style>
 </head>
 <body>
+    <!-- Retro Timer -->
+    <div class="retro-timer" id="retroTimer">
+        T-MINUS <span id="timeDisplay">00:00:00</span>
+    </div>
+    
+    <a href="mailto:sushruthk9@gmail.com" class="contact-link">✉ CONTACT US</a>
+    
+    <a href="/" class="back-link">← BACK TO SOLAR SYSTEM</a>
+
     <section class="hero-heading-center">
         <div class="container-2">
             <h1 class="centered-heading margin-bottom-32px">Memories Collection</h1>
@@ -84,5 +197,25 @@
 
     <script src="js/jquery.js" type="text/javascript"></script>
     <script src="js/webflow-script.js" type="text/javascript"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Retro Timer
+            let seconds = 0;
+            const timeDisplay = document.getElementById('timeDisplay');
+            
+            function formatTime(totalSeconds) {
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const secs = totalSeconds % 60;
+                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            }
+            
+            setInterval(function() {
+                seconds++;
+                timeDisplay.textContent = formatTime(seconds);
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
