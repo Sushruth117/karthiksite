@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Guest Book - Karthigeyan R</title>
+    <meta content="Share your memories and messages for Karthigeyan R" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    <link href="../css/main-style.css" rel="stylesheet" type="text/css">
+    <link href="../css/pages-style.css" rel="stylesheet" type="text/css">
+    
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Playfair Display:regular", "Major Mono Display:regular"]
+            }
+        });
+    </script>
+    
+    <link href="../images/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../images/app-icon.png" rel="apple-touch-icon">
+</head>
+<body class="page-body guestbook-page">
+    <div id="starfield" class="stars-bg"></div>
+    
+    <a href="../index.html" class="back-link">
+        <span class="back-arrow">←</span> Back to Solar System
+    </a>
+
+    <div class="page-content">
+        <div class="container">
+            <header class="page-header">
+                <div class="guestbook-icon">✍️</div>
+                <h1 class="page-title">Guest Book</h1>
+                <p class="page-subtitle">Share your memories, thoughts, and messages</p>
+            </header>
+
+            <section class="guestbook-intro">
+                <div class="message-card">
+                    <p class="lead-text">
+                        This space is for everyone who knew Karthik—friends, family, classmates, and colleagues—to 
+                        share their memories, stories, and messages.
+                    </p>
+                    <p class="message-text">
+                        Your words bring comfort and keep his memory alive. Every story shared is a gift to those 
+                        who loved him.
+                    </p>
+                </div>
+            </section>
+
+            <section class="add-entry-section">
+                <h2 class="section-heading">Share Your Memory</h2>
+                
+                <form id="guestbook-form" class="guestbook-form">
+                    <div class="form-success" id="form-success" style="display: none;">
+                        <p>✓ Thank you for sharing your memory. It means so much.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-name">Your Name *</label>
+                        <input type="text" id="entry-name" name="name" required placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-email">Your Email (optional, not displayed publicly)</label>
+                        <input type="email" id="entry-email" name="email" placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-relationship">Your Connection to Karthik</label>
+                        <select id="entry-relationship" name="relationship">
+                            <option value="">Select...</option>
+                            <option value="friend">Friend</option>
+                            <option value="classmate">Classmate</option>
+                            <option value="colleague">Colleague</option>
+                            <option value="family">Family</option>
+                            <option value="teacher">Teacher/Mentor</option>
+                            <option value="student">Student</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="entry-message">Your Memory or Message *</label>
+                        <textarea id="entry-message" name="message" required rows="6" 
+                                  placeholder="Share a favorite memory, story, or message for Karthik..."></textarea>
+                        <small class="form-hint">Take your time—there's no rush. Write from the heart.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="entry-consent" name="consent" required>
+                            <span>I consent to sharing this memory publicly on this memorial site</span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Share Memory</button>
+                        <button type="reset" class="btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="entries-section">
+                <h2 class="section-heading">Shared Memories</h2>
+                <p class="section-subtitle">Stories and messages from friends and family</p>
+                
+                <div id="entries-container" class="entries-container">
+                    <!-- Sample entries -->
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <div class="entry-avatar">S</div>
+                            <div class="entry-info">
+                                <p class="entry-author">Sushruth K</p>
+                                <p class="entry-meta">Friend • Posted on January 15, 2024</p>
+                            </div>
+                        </div>
+                        <div class="entry-content">
+                            <p>
+                                Karthik, my dear friend, you left us too soon. I remember our late-night discussions 
+                                about physics, philosophy, and everything in between. Your passion for learning was 
+                                contagious, and you inspired everyone around you to think deeper and aim higher.
+                            </p>
+                            <p>
+                                I'll never forget how you could explain the most complex concepts in ways that made 
+                                them feel simple and beautiful. You had a gift for seeing connections that others missed.
+                            </p>
+                            <p>
+                                You're deeply missed, but your legacy lives on in all the lives you touched. 
+                                Thank you for being such an incredible friend.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <div class="entry-avatar">A</div>
+                            <div class="entry-info">
+                                <p class="entry-author">Anonymous Friend</p>
+                                <p class="entry-meta">Classmate • Posted on January 10, 2024</p>
+                            </div>
+                        </div>
+                        <div class="entry-content">
+                            <p>
+                                Karthik was one of those rare people who made everyone feel valued and heard. 
+                                His kindness was as remarkable as his intelligence. I'm grateful for every 
+                                conversation we had and every laugh we shared.
+                            </p>
+                            <p>
+                                The world lost a brilliant mind and a beautiful soul. Rest in peace, friend.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="guestbook-entry">
+                        <div class="entry-header">
+                            <div class="entry-avatar">R</div>
+                            <div class="entry-info">
+                                <p class="entry-author">Former Teacher</p>
+                                <p class="entry-meta">Teacher • Posted on December 28, 2023</p>
+                            </div>
+                        </div>
+                        <div class="entry-content">
+                            <p>
+                                In all my years of teaching, few students have shown the same level of curiosity 
+                                and dedication as Karthik. He wasn't just interested in getting good grades—he 
+                                genuinely wanted to understand how things work at a fundamental level.
+                            </p>
+                            <p>
+                                His questions always pushed me to think deeper, and I learned as much from him 
+                                as he did from me. He was a true scholar in every sense of the word.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="load-more-container">
+                        <button id="load-more-btn" class="btn-secondary">Load More Memories</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="guidelines-section">
+                <h3>Guidelines for Sharing</h3>
+                <div class="guidelines-card">
+                    <ul class="guidelines-list">
+                        <li>Please be respectful and thoughtful in your messages</li>
+                        <li>Share genuine memories and personal stories</li>
+                        <li>Avoid sharing contact information publicly</li>
+                        <li>All submissions are reviewed before being published</li>
+                        <li>If you prefer privacy, you can submit anonymously by just using your first name</li>
+                    </ul>
+                    <p class="guidelines-note">
+                        If you'd like to share photos along with your memory, please email them to 
+                        <a href="/cdn-cgi/l/email-protection#deadabadb6acabaab6b5e79eb9b3bfb7b2f0bdb1b3"><span class="__cf_email__" data-cfemail="4a393f3922383f3e2221730a2d272b232664292527">[email&#160;protected]</span></a>
+                    </p>
+                </div>
+            </section>
+
+            <nav class="page-nav">
+                <a href="memorial-day.html" class="page-nav-link">
+                    <span>← Memorial Day</span>
+                </a>
+                <a href="timeline.html" class="page-nav-link">
+                    <span>Timeline →</span>
+                </a>
+            </nav>
+
+            <footer class="page-footer">
+                <p class="footer-text">In loving memory of Karthigeyan R</p>
+                <p class="footer-subtext">Forever in our hearts • 1992-2024</p>
+                <p class="footer-contact">
+                    <a href="/cdn-cgi/l/email-protection#265553554e5453524e4d1f66414b474f4a0845494b" class="contact-link">✉ Contact Us</a>
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../js/main-script.js"></script>
+    <script src="../js/pages-script.js"></script>
+    <script>
+        // Guest Book Form Handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('guestbook-form');
+            const successMsg = document.getElementById('form-success');
+            const entriesContainer = document.getElementById('entries-container');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    name: document.getElementById('entry-name').value.trim(),
+                    email: document.getElementById('entry-email').value.trim(),
+                    relationship: document.getElementById('entry-relationship').value,
+                    message: document.getElementById('entry-message').value.trim(),
+                    consent: document.getElementById('entry-consent').checked,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Store in localStorage (in production, this would go to a backend)
+                let entries = JSON.parse(localStorage.getItem('guestbook-entries') || '[]');
+                entries.unshift(formData);
+                localStorage.setItem('guestbook-entries', JSON.stringify(entries));
+                
+                // Show success message
+                successMsg.style.display = 'block';
+                form.reset();
+                
+                // Scroll to success message
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 5000);
+                
+                // In production, you would display the new entry after approval
+                // For now, just show notification
+                showNotification('Thank you for sharing your memory');
+            });
+            
+            function showNotification(message) {
+                const existing = document.querySelector('.notification-toast');
+                if (existing) existing.remove();
+                
+                const notification = document.createElement('div');
+                notification.className = 'notification-toast show';
+                notification.textContent = message;
+                document.bod
