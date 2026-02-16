@@ -68,7 +68,7 @@
             box-shadow: 0 0 15px #99d5ff !important;
         }
         
-        /* SIMPLE BUTTON FIX - make them display in rows - ADD THIS HERE */
+               /* SIMPLE BUTTON FIX - make them display in rows */
         .dialog-box div[style*="margin-top: 30px"] {
             display: grid !important;
             grid-template-columns: repeat(4, 1fr) !important;
@@ -86,6 +86,62 @@
             border-radius: 20px !important;
             text-decoration: none !important;
         }
+        
+        /* FIX HEADING POSITION - move to top left - ADD THIS HERE */
+        .heading {
+            position: fixed !important;
+            top: 30px !important;
+            left: 30px !important;
+            font-size: 2.5em !important;
+            color: white !important;
+            text-shadow: 0 0 20px rgba(255,215,0,0.5) !important;
+            z-index: 2000 !important;
+            max-width: 600px !important;
+            text-align: left !important;
+            background: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        /* FIX DIALOG BOX - make it larger and at bottom left */
+        .dialog-box {
+            position: fixed !important;
+            bottom: 30px !important;
+            left: 30px !important;
+            top: auto !important;
+            right: auto !important;
+            width: 650px !important;
+            max-width: 650px !important;
+            z-index: 1000 !important;
+        }
+        
+        .dialog.dialog-mobile {
+            width: 100% !important;
+            max-width: 650px !important;
+            background: rgba(0, 0, 0, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid #fc0 !important;
+            border-radius: 15px !important;
+            padding: 25px !important;
+            box-shadow: 0 0 50px rgba(0,0,0,0.9) !important;
+        }
+        
+        /* Make the text inside dialog more readable */
+        .dialog.dialog-mobile .p {
+            font-size: 1.1em !important;
+            line-height: 1.7 !important;
+            color: #f0f0f0 !important;
+            margin-bottom: 15px !important;
+        }
+        
+        /* Ensure the separator is visible */
+        .dialog.dialog-mobile .separator {
+            width: 100px !important;
+            height: 3px !important;
+            background: #fc0 !important;
+            margin: 15px 0 20px 0 !important;
+        }
+
         
         /* Image gallery positioning - right center */
         .image-gallery-container {
