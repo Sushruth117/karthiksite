@@ -116,7 +116,61 @@
   </div>
 </div>
 
-<div class="w-layout-blockcontainer container-4 w-container"><div class="collection-list-wrapper w-dyn-list"><div class="w-dyn-empty"><div>No items found.</div></div></div><div class="form-block w-form"><form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="65b2ec386ef45d6ca361f367" data-wf-element-id="57ae829f-343a-521e-5cc5-14cd3b0a3e3f"><label for="name">Name</label><input class="w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name"/><label for="email">Email Address</label><input class="w-input" maxlength="256" name="email" data-name="Email" placeholder="" type="email" id="email" required=""/><input type="submit" data-wait="Please wait." class="w-button" value="Submit"/></form><div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div></div><div style="opacity:0" class="dialog dialog-2"><h1 class="heading">Where did they go?</h1><div class="separator"></div><p class="p">See those pixels orbiting that yellow center? You guessed it, those are the planets. As large as they can be, they seem like grains of dust, compared with the vastness that is our Solar System.</p><p class="p">The rocky planets of the Inner Solar System are orbiting tightly together, while the gas giants are chilling at a comfortable distance from the Sun.</p><div class="separator"></div><div class="timer-label">Time since Karthik left us: <span id="seconds">1</span> seconds</div></div></div><div class="x-axis"></div><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre"></code></pre><script src="js/jquery.js" type="text/javascript"></script><script src="js/webflow-script.js" type="text/javascript"></script><script>
+<div class="w-layout-blockcontainer container-4 w-container">
+  <div class="collection-list-wrapper w-dyn-list">
+    <div class="w-dyn-empty">
+      <div>No items found.</div>
+    </div>
+  </div>
+
+  <div class="form-block w-form">
+    <form id="email-form" name="email-form" data-name="Email Form" method="get"
+      data-wf-page-id="65b2ec386ef45d6ca361f367"
+      data-wf-element-id="57ae829f-343a-521e-5cc5-14cd3b0a3e3f">
+      <label for="name">Name</label>
+      <input class="w-input" maxlength="256" name="name" data-name="Name" type="text" id="name"/>
+      <label for="email">Email Address</label>
+      <input class="w-input" maxlength="256" name="email" data-name="Email" type="email" id="email" required/>
+      <input type="submit" data-wait="Please wait." class="w-button" value="Submit"/>
+    </form>
+    <div class="w-form-done">
+      <div>Thank you! Your submission has been received!</div>
+    </div>
+    <div class="w-form-fail">
+      <div>Oops! Something went wrong while submitting the form.</div>
+    </div>
+  </div>
+</div>
+
+<div style="opacity:0" class="dialog dialog-2">
+  <h1 class="heading">Where did they go?</h1>
+  <div class="separator"></div>
+  <p class="p">
+    See those pixels orbiting that yellow center? You guessed it, those are the planets.
+    As large as they can be, they seem like grains of dust, compared with the vastness
+    that is our Solar System.
+  </p>
+  <p class="p">
+    The rocky planets of the Inner Solar System are orbiting tightly together,
+    while the gas giants are chilling at a comfortable distance from the Sun.
+  </p>
+  <div class="separator"></div>
+  <div class="timer-label">
+    Time since Karthik left us: <span id="seconds">1</span> seconds
+  </div>
+</div>
+
+<div class="x-axis"></div>
+
+<pre contenteditable="false" class="w-code-block"
+  style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em">
+  <code class="language-javascript" style="white-space:pre"></code>
+</pre>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/webflow-script.js" type="text/javascript"></script>
+
+<script>
   $(".real-size").click(function(){
     $(".body").addClass("real-size");
   });
@@ -129,10 +183,21 @@
   $(".reset-orbits").click(function(){
     $(".body").removeClass("real-orbits");
   });
-</script><script type="text/javascript">
+</script>
+
+<script type="text/javascript">
   var secondsLabel = document.getElementById("seconds");
   var start = 1;
-  setInterval(function(){secondsLabel.innerHTML = start++;}, 1000);
+  setInterval(function(){ secondsLabel.innerHTML = start++; }, 1000);
+</script>
+
+<!-- 🔒 FIX: prevent giant Sun on page load -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.remove("real-size");
+    document.body.classList.remove("real-orbits");
+  });
+</script>
 </script>
 
 <script>
