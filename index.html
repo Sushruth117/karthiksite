@@ -4,13 +4,17 @@
   /* Hide the Webflow CMS empty state box ("No items found.") */
   .w-dyn-empty { display: none !important; }
 
-  /* Homepage gallery replaces the old .image3 and .image2 images */
+  /* Fix occasional top black band by ensuring stars cover full viewport */
+  .stars-bg { inset: 0 !important; }
+
+  /* Homepage gallery replaces the old .image2 and .image3 images */
   .home-gallery{
     position: fixed;
     top: 12vh;
     right: 3vw;
     width: min(860px, 52vw);
     z-index: 60;
+    pointer-events: auto;
   }
   .home-gallery-frame{
     border: 3px solid rgba(255,255,255,0.22);
@@ -37,7 +41,6 @@
     object-fit: cover !important;
     margin: 0 !important;
   }
-
   .home-gallery-btn{
     position:absolute;
     top:50%;
@@ -57,7 +60,6 @@
   .home-gallery-btn:hover{ background: rgba(0,0,0,0.65); }
   .home-gallery-prev{ left:10px; }
   .home-gallery-next{ right:10px; }
-
   .home-gallery-meta{
     position:absolute;
     left:10px;
@@ -84,17 +86,13 @@
     font-size: 13px;
     white-space: nowrap;
   }
-
-  /* Mobile: let it flow normally */
   @media (max-width: 991px){
     .home-gallery{
       position: static;
       width: 92vw;
       margin: 16px auto 0;
     }
-    #galleryImage{
-      height: 320px !important;
-    }
+    #galleryImage{ height: 320px !important; }
   }
 </style>
 
@@ -116,61 +114,7 @@
   </div>
 </div>
 
-<div class="w-layout-blockcontainer container-4 w-container">
-  <div class="collection-list-wrapper w-dyn-list">
-    <div class="w-dyn-empty">
-      <div>No items found.</div>
-    </div>
-  </div>
-
-  <div class="form-block w-form">
-    <form id="email-form" name="email-form" data-name="Email Form" method="get"
-      data-wf-page-id="65b2ec386ef45d6ca361f367"
-      data-wf-element-id="57ae829f-343a-521e-5cc5-14cd3b0a3e3f">
-      <label for="name">Name</label>
-      <input class="w-input" maxlength="256" name="name" data-name="Name" type="text" id="name"/>
-      <label for="email">Email Address</label>
-      <input class="w-input" maxlength="256" name="email" data-name="Email" type="email" id="email" required/>
-      <input type="submit" data-wait="Please wait." class="w-button" value="Submit"/>
-    </form>
-    <div class="w-form-done">
-      <div>Thank you! Your submission has been received!</div>
-    </div>
-    <div class="w-form-fail">
-      <div>Oops! Something went wrong while submitting the form.</div>
-    </div>
-  </div>
-</div>
-
-<div style="opacity:0" class="dialog dialog-2">
-  <h1 class="heading">Where did they go?</h1>
-  <div class="separator"></div>
-  <p class="p">
-    See those pixels orbiting that yellow center? You guessed it, those are the planets.
-    As large as they can be, they seem like grains of dust, compared with the vastness
-    that is our Solar System.
-  </p>
-  <p class="p">
-    The rocky planets of the Inner Solar System are orbiting tightly together,
-    while the gas giants are chilling at a comfortable distance from the Sun.
-  </p>
-  <div class="separator"></div>
-  <div class="timer-label">
-    Time since Karthik left us: <span id="seconds">1</span> seconds
-  </div>
-</div>
-
-<div class="x-axis"></div>
-
-<pre contenteditable="false" class="w-code-block"
-  style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em">
-  <code class="language-javascript" style="white-space:pre"></code>
-</pre>
-
-<script src="js/jquery.js" type="text/javascript"></script>
-<script src="js/webflow-script.js" type="text/javascript"></script>
-
-<script>
+<div style="opacity:0" class="dialog dialog-2"><h1 class="heading">Where did they go?</h1><div class="separator"></div><p class="p">See those pixels orbiting that yellow center? You guessed it, those are the planets. As large as they can be, they seem like grains of dust, compared with the vastness that is our Solar System.</p><p class="p">The rocky planets of the Inner Solar System are orbiting tightly together, while the gas giants are chilling at a comfortable distance from the Sun.</p><div class="separator"></div><div class="timer-label">Time since Karthik left us: <span id="seconds">1</span> seconds</div></div></div><div class="w-layout-blockcontainer container-4 w-container"><div class="collection-list-wrapper w-dyn-list"><div class="w-dyn-empty"><div>No items found.</div></div></div><div class="form-block w-form"><form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="65b2ec386ef45d6ca361f367" data-wf-element-id="57ae829f-343a-521e-5cc5-14cd3b0a3e3f"><label for="name">Name</label><input class="w-input" maxlength="256" name="name" data-name="Name" placeholder="" type="text" id="name"/><label for="email">Email Address</label><input class="w-input" maxlength="256" name="email" data-name="Email" placeholder="" type="email" id="email" required=""/><input type="submit" data-wait="Please wait." class="w-button" value="Submit"/></form><div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div></div><div class="x-axis"></div><pre contenteditable="false" class="w-code-block" style="display:block;overflow-x:auto;background:#2b2b2b;color:#f8f8f2;padding:0.5em"><code class="language-javascript" style="white-space:pre"></code></pre><script src="js/jquery.js" type="text/javascript"></script><script src="js/webflow-script.js" type="text/javascript"></script><script>
   $(".real-size").click(function(){
     $(".body").addClass("real-size");
   });
@@ -183,49 +127,33 @@
   $(".reset-orbits").click(function(){
     $(".body").removeClass("real-orbits");
   });
-</script>
-
-<script type="text/javascript">
+</script><script type="text/javascript">
   var secondsLabel = document.getElementById("seconds");
   var start = 1;
-  setInterval(function(){ secondsLabel.innerHTML = start++; }, 1000);
-</script>
-
-<!-- 🔒 FIX: prevent giant Sun on page load -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.body.classList.remove("real-size");
-    document.body.classList.remove("real-orbits");
-  });
-</script>
+  setInterval(function(){secondsLabel.innerHTML = start++;}, 1000);
 </script>
 
 <script>
-  // HOME GALLERY: rotates through images/ folder with Prev/Next
+  // HOME GALLERY: rotates through images/ folder with Prev/Next.
   // NOTE: filenames are case-sensitive on GitHub Pages.
   const HOME_GALLERY = [
     { file: "img-20190908-wa0007.jpg", caption: "Karthik in Singapore" },
     { file: "final.jpg", caption: "Karthik at Kodaikanal Solar Observatory (Dec 26, 2019)" },
-
     { file: "20191226_131622.jpg", caption: "Kodaikanal Observatory" },
     { file: "IMG-20190420-WA0004.jpg", caption: "" },
     { file: "IMG-20191013-WA0002.jpg", caption: "" },
-
     { file: "Karthik in college park.jpg", caption: "College Park" },
     { file: "Karthik in class.jpg", caption: "In class" },
     { file: "Karthik in class (2).jpg", caption: "In class" },
     { file: "Karthik with class.jpg", caption: "With class" },
-
     { file: "Karthik with Shiva.jpg", caption: "With Shiva" },
     { file: "Karthik with Shiva (2).jpg", caption: "With Shiva" },
     { file: "Karthik with shiva (3).jpg", caption: "With Shiva" },
-
     { file: "Karthik with Kapil.jpeg", caption: "With Kapil" },
     { file: "Karthik with Nikhil.jpg", caption: "With Nikhil" },
     { file: "Karthik with Manisha being funny.jpg", caption: "With Manisha" },
     { file: "Karthik with Paresh.jpeg", caption: "With Paresh" },
     { file: "Karthik with Paresh (2).jpeg", caption: "With Paresh" },
-
     { file: "Karthik discussing case study.jpg", caption: "Discussing a case study" },
     { file: "Karthik in football team.jpg", caption: "Football team" },
     { file: "Karthik in Tennis team at IIM Bangalore.jpg", caption: "Tennis team (IIM Bangalore)" },
@@ -235,7 +163,6 @@
     { file: "Karthik was an investor in cricket team which one(Photo with the cricket team).jpg", caption: "Cricket team" }
   ];
 
-  // Encode spaces/parentheses safely
   function safeUrl(pathPart) {
     return pathPart.split("/").map(encodeURIComponent).join("/");
   }
@@ -259,14 +186,12 @@
     const fullPath = safeUrl("images/" + item.file);
 
     imgEl.onerror = function () {
-      // If one filename is wrong, skip to next instead of breaking the page
       imgEl.onerror = null;
       nextGallery();
     };
 
     imgEl.src = fullPath;
     linkEl.href = fullPath;
-
     imgEl.alt = caption ? ("Karthik photo — " + caption) : "Karthik photo";
 
     if (capEl) capEl.textContent = caption;
@@ -298,6 +223,14 @@
 
   renderGallery(galleryIndex);
   startAutoRotate();
+</script>
+
+<script>
+  // Prevent "giant sun" state on load (in case buttons were clicked)
+  document.addEventListener("DOMContentLoaded", function () {
+    document.body.classList.remove("real-size");
+    document.body.classList.remove("real-orbits");
+  });
 </script>
 
 </body></html>
