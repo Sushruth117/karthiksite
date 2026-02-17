@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Karthigeyan Excellence Award</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="css/webflow-style.css" rel="stylesheet" type="text/css" />
+  <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+  <link href="images/app-icon.png" rel="apple-touch-icon" />
+
+  <style>
+    .stars-bg { inset: 0 !important; }
+    body.body { min-height: 100vh; overflow-x: hidden; }
+
+    .page-wrap{
+      position: relative;
+      padding: 8vh 6vw 6vh;
+      max-width: 1100px;
+      margin: 0 auto;
+      z-index: 5;
+    }
+
+    .award-card{
+      margin-top: 22px;
+      border: 2px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.35);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+      padding: 18px;
+      backdrop-filter: blur(2px);
+    }
+
+    .award-grid{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 991px){ .award-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 560px){ .award-grid{ grid-template-columns: 1fr; } }
+
+    .award-photo{
+      border-radius: 14px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.25);
+      position: relative;
+      cursor: pointer;
+    }
+    .award-photo img{
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .award-cap{
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff;
+      font-size: 13px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .top-actions{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    /* Lightbox */
+    .lb{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 18px;
+    }
+    .lb.open{ display:flex; }
+    .lb-inner{
+      width: min(1100px, 96vw);
+      max-height: 90vh;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.35);
+    }
+    .lb-img{
+      width: 100%;
+      height: min(74vh, 720px);
+      object-fit: contain;
+      display: block;
+      background: rgba(0,0,0,0.6);
+    }
+    .lb-bar{
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      align-items: center;
+      color: #fff;
+      background: rgba(0,0,0,0.45);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 13px;
+    }
+    .lb-btn{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.35);
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 28px;
+      line-height: 42px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lb-btn:hover{ background: rgba(0,0,0,0.65); }
+  </style>
+</head>
+
+<body class="body">
+  <div class="canvas">
+    <div class="stars-bg"></div>
+
+    <div class="page-wrap">
+      <h1 class="heading">KARTHIGEYAN EXCELLENCE AWARD</h1>
+      <p class="p" style="opacity:0.92;">
+        An annual award presented to the <strong>Physics topper (Class 12)</strong> at
+        <strong>Madras Christian College Higher Secondary School</strong>, where Karthigeyan completed his schooling.
+        The award is given every year during the school Annual Day function.
+      </p>
+
+      <div class="top-actions">
+        <a href="index.html" class="button real-orbits w-button">Home</a>
+        <a href="memories.html" class="button real-orbits w-button">Memories</a>
+      </div>
+
+      <div class="award-card">
+        <p class="p" style="margin-bottom:0;">
+          <em>Message from Karthik’s father:</em><br/><br/>
+          “We have initiated an award by name <strong>KARTHIGEYAN EXCELLENCE AWARD</strong> to be distributed to the school topper in physics 12 th exam in Madras Christian College HR sec school where Kathi did his entire schooling.
+          The school management was very kind to distribute the award during their school annual day function every year.
+          The above photos are taken during the school function”
+        </p>
+
+        <div class="separator" style="margin:18px 0;"></div>
+
+        <h3 class="heading" style="font-size:22px; margin-bottom:10px;">Annual Day Photos</h3>
+        <div class="award-grid" id="awardGrid"></div>
+      </div>
+
+      <a href="mailto:sushruthk9@gmail.com" class="link" style="display:inline-block; margin-top:18px;">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lb" id="lb">
+    <div class="lb-inner">
+      <img id="lbImg" class="lb-img" src="" alt="Award photo"/>
+      <div class="lb-bar">
+        <div id="lbCaption"></div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <button class="lb-btn" id="lbPrev" aria-label="Previous">‹</button>
+          <button class="lb-btn" id="lbNext" aria-label="Next">›</button>
+          <button class="lb-btn" id="lbClose" aria-label="Close">×</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ✅ Put the real award photo filenames here (in /images/)
+    // For now it expects award-1.jpg, award-2.jpg, award-3.jpg etc.
+    const AWARD_PHOTOS = [
+      { file: "award-1.jpg", caption: "Annual Day Function" },
+      { file: "award-2.jpg", caption: "Award Presentation" },
+      { file: "award-3.jpg", caption: "With School Management" }
+    ];
+
+    function safeUrl(pathPart) {
+      return pathPart.split("/").map(encodeURIComponent).join("/");
+    }
+
+    const grid = document.getElementById("awardGrid");
+    const lb = document.getElementById("lb");
+    const lbImg = document.getElementById("lbImg");
+    const lbCaption = document.getElementById("lbCaption");
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    const lbClose = document.getElementById("lbClose");
+
+    let idx = 0;
+
+    function openLb(i){
+      idx = (i + AWARD_PHOTOS.length) % AWARD_PHOTOS.length;
+      const item = AWARD_PHOTOS[idx];
+      const src = safeUrl("images/" + item.file);
+      lbImg.src = src;
+      lbCaption.textContent = item.caption || "";
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLb(){
+      lb.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function next(){ openLb(idx + 1); }
+    function prev(){ openLb(idx - 1); }
+
+    function render(){
+      if (!grid) return;
+
+      if (!AWARD_PHOTOS.length) {
+        grid.innerHTML = '<p class="p">Upload award photos into the <strong>images</strong> folder and update <code>AWARD_PHOTOS</code> in <code>award.html</code>.</p>';
+        return;
+      }
+
+      grid.innerHTML = AWARD_PHOTOS.map((p, i) => {
+        const src = safeUrl("images/" + p.file);
+        const cap = (p.caption || "").replace(/"/g, "&quot;");
+        return `
+          <div class="award-photo" role="button" tabindex="0" data-i="${i}">
+            <img src="${src}" alt="${cap || "Award photo"}"
+                 onerror="this.style.opacity=0.25; this.alt='Missing file: ${p.file}'" />
+            <div class="award-cap">${cap}</div>
+          </div>
+        `;
+      }).join("");
+
+      grid.querySelectorAll(".award-photo").forEach(el => {
+        el.addEventListener("click", () => openLb(parseInt(el.getAttribute("data-i"), 10)));
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") openLb(parseInt(el.getAttribute("data-i"), 10));
+        });
+      });
+    }
+
+    lb.addEventListener("click", (e) => { if (e.target === lb) closeLb(); });
+    lbClose.addEventListener("click", closeLb);
+    lbNext.addEventListener("click", next);
+    lbPrev.addEventListener("click", prev);
+
+    document.addEventListener("keydown", (e) => {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    });
+
+    render();
+  </script>
+</body>
+</html>
