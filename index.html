@@ -39,181 +39,127 @@
     /* Make sure stars bg doesn't create weird overlays */
     .stars-bg { inset: 0 !important; }
 
-    /* Right side layout */
+    <style>
+  /* Right side layout */
+  .home-right-panels{
+    position: absolute;
+    top: 110px;
+    right: 5vw;
+    width: min(780px, 48vw);
+    display: grid;
+    grid-template-columns: minmax(320px, 1.35fr) minmax(260px, 0.95fr);
+    gap: 20px;
+    align-items: start;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .home-right-panels > *{
+    pointer-events: auto;
+    width: 100%;
+  }
+
+  /* Main gallery */
+  .hero-gallery{
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.18);
+    background: rgba(0,0,0,0.30);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  }
+
+  .hero-gallery img{
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+    background: rgba(0,0,0,0.40);
+  }
+
+  /* Award card */
+  .award-card{
+    width: 100%;
+    border-radius: 18px;
+    border: 2px solid rgba(255,255,255,0.18);
+    background: rgba(255,196,64,0.24);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.35);
+    padding: 18px;
+    color: #fff;
+    backdrop-filter: blur(4px);
+  }
+
+  .award-mini{
+    margin-top: 14px;
+  }
+
+  .award-mini-frame{
+    position: relative;
+    width: 100%;
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.18);
+    background: rgba(0,0,0,0.25);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+  }
+
+  .award-mini-frame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background: rgba(0,0,0,0.35);
+  }
+
+  /* Better responsive behavior */
+  @media (max-width: 1200px){
     .home-right-panels{
-      position: absolute;
-      top: 120px;
-      right: 6vw;
-      width: max(380px, 52vw);
-      display: grid;
-      grid-template-columns: 1.45fr 1fr;
-      gap: 18px;
-      align-items: start;
-      z-index: 10;
-      pointer-events: none; /* we re-enable on children */
+      width: min(700px, 52vw);
+      grid-template-columns: 1.2fr 1fr;
     }
-    .home-right-panels > * { pointer-events: auto; }
+  }
 
-    @media (max-width: 391px){
-      .home-right-panels{
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 22vw;
-        margin: 22px auto 0;
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* MAIN GALLERY */
-    .hero-gallery{
+  @media (max-width: 991px){
+    .home-right-panels{
       position: relative;
-      width: 50%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.30);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+      top: auto;
+      right: auto;
+      width: min(92vw, 760px);
+      margin: 32px auto 0;
+      grid-template-columns: 1fr;
     }
+
     .hero-gallery img{
-      width: 50%;
       height: 300px;
-      object-fit: cover;
-      display: block;
-      background: rgba(0,0,0,0.40);
-    }
-    @media (max-width: 391px){
-      .hero-gallery img{ height: 300px; }
     }
 
-    .hero-btn{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.30);
-      background: rgba(0,0,0,0.35);
-      color: #fff;
-      font-size: 26px;
-      line-height: 42px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .hero-btn:hover{ background: rgba(0,0,0,0.55); }
-    .hero-btn.left{ left: 14px; }
-    .hero-btn.right{ right: 14px; }
-
-    .hero-cap{
-      position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      padding: 10px 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: #fff;
-      font-size: 14px;
-      line-height: 1.2;
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
-    }
-    .hero-cap .title{
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
-    .hero-cap .count{
-      opacity: 0.9;
-      font-size: 13px;
-      flex: 0 0 auto;
-    }
-
-    /* AWARD CARD */
-    .award-card{
-      border-radius: 18px;
-      border: 2px solid rgba(255,255,255,0.18);
-      background: rgba(255,196,64,0.28);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.35);
-      padding: 16px 16px 14px;
-      color: #fff;
-      backdrop-filter: blur(2px);
-    }
-    .award-card h3{
-      margin: 0 0 8px 0;
-      font-size: 22px;
-      line-height: 1.2;
-      color: #fff;
-    }
-    .award-card p{
-      margin: 0 0 10px 0;
-      color: rgba(255,255,255,0.92);
-      line-height: 1.5;
-      font-size: 14px;
-    }
-    .award-card a{
-      color: #fff;
-      text-decoration: underline;
-      font-size: 14px;
-    }
-
-    /* Award mini gallery inside award card */
-    .award-mini{ margin-top: 12px; }
     .award-mini-frame{
-      position: relative;
-      width: 50%;
-      height: 140px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 2px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.25);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+      height: 220px;
     }
-    .award-mini-frame img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      background: rgba(0,0,0,0.35);
+  }
+
+  @media (max-width: 640px){
+    .home-right-panels{
+      width: 94vw;
+      margin: 24px auto 0;
+      gap: 16px;
     }
-    .award-mini-btn{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.30);
-      background: rgba(0,0,0,0.35);
-      color: #fff;
-      font-size: 22px;
-      line-height: 34px;
-      cursor: pointer;
-      user-select: none;
+
+    .hero-gallery img{
+      height: 240px;
     }
-    .award-mini-btn.left{ left: 10px; }
-    .award-mini-btn.right{ right: 10px; }
-    .award-mini-btn:hover{ background: rgba(0,0,0,0.55); }
-    .award-mini-cap{
-      position: absolute;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      padding: 6px 10px;
-      border-radius: 12px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.14);
-      color: #fff;
-      font-size: 12px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+
+    .award-mini-frame{
+      height: 180px;
     }
-  </style>
+
+    .award-card h3{
+      font-size: 20px;
+    }
+  }
+</style>
 </head>
 
 <body class="body">
